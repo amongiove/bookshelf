@@ -1,0 +1,14 @@
+require 'sinatra'
+require 'active_record'
+require 'require_all'
+
+configure :development do
+    ENV['SINATRA_ENV'] ||= "development"
+
+    require 'bundler/setup'
+    Bundler.require(:default, ENV['SINATRA_ENV'])
+
+    ActiveRecord::Base.establish_connection(ENV['SINATRA_ENV'].to_sym)
+end
+
+require_all 'app'
