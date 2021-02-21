@@ -52,8 +52,6 @@ GEM
     public_suffix (4.0.6)
     racc (1.5.2)
     rack (2.2.3)
-    rack-flash3 (1.0.5)
-      rack
     rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
@@ -93,6 +91,8 @@ GEM
     sinatra-activerecord (2.0.22)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     sqlite3 (1.4.2)
     thin (1.8.0)
       daemons (~> 1.0, >= 1.0.9)
@@ -120,7 +120,6 @@ DEPENDENCIES
   capybara
   database_cleaner
   pry
-  rack-flash3
   rack-test
   rake
   require_all
@@ -128,6 +127,7 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-activerecord
+  sinatra-flash
   sqlite3
   thin (~> 1.8)
   tux

@@ -8,7 +8,8 @@ gem 'require_all'
 gem 'thin', '~>1.8'
 gem 'bcrypt'
 gem "tux"
-gem 'rack-flash3'
+# gem 'rack-flash3'
+gem 'sinatra-flash'
 
 group :development, :test do
   gem 'sqlite3'

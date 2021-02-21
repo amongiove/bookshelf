@@ -1,9 +1,11 @@
+<h3><%= flash[:message] %></hs>
+
 <h1>Sign Up</h1>
 
 <form method="POST" action="/signup">
-    Username: <input type="text" name="username">
-    E-mail: <input type="text" name="email">
-    Password: <input type="text" name="password">
+    Username: <input type="text" name="username" id="username">
+    E-mail: <input type="text" name="email" id="email">
+    Password: <input type="text" name="password" id="password">
     <input type="submit" value="Sign Up">
 </form>
 
