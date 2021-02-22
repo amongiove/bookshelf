@@ -30,11 +30,22 @@ class UsersController < ApplicationController
     end
 
     get '/login' do
-        erb :'login'
+        # if logged_in?
+        #     redirect to("/home/:username_slug")
+        # else
+            erb :'login'
+        # end
     end
 
     post '/login' do
-        puts "POST LOGIN"
+        @user = User.find_by(:username => params[:username], :password_digest => params[:password])
+        if @user != nil
+            session['user_id'] = @user.id
+            redirect to('/home/:username_slug')
+        else
+            flash[:message] = "Incorrect username and/or password."
+            redirect to('/')
+        end
     end
 
 end
