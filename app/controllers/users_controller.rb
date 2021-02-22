@@ -26,26 +26,30 @@ class UsersController < ApplicationController
             end
             @user.save
         end
-        # redirect to(login and home page)
+        redirect to('/home')
     end
 
     get '/login' do
-        # if logged_in?
-        #     redirect to("/home/:username_slug")
-        # else
+        if logged_in?
+            redirect to("/home")
+        else
             erb :'login'
-        # end
+        end
     end
 
     post '/login' do
         @user = User.find_by(:username => params[:username], :password_digest => params[:password])
         if @user != nil
             session['user_id'] = @user.id
-            redirect to('/home/:username_slug')
+            redirect to('/home')
         else
             flash[:message] = "Incorrect username and/or password."
             redirect to('/')
         end
+    end
+
+    get '/home' do
+        puts "user_home page"
     end
 
 end
