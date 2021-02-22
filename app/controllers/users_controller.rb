@@ -28,5 +28,13 @@ class UsersController < ApplicationController
         end
         # redirect to(login and home page)
     end
-    
+
+    get '/login' do
+        erb :'login'
+    end
+
+    post '/login' do
+        puts "POST LOGIN"
+    end
+
 end
