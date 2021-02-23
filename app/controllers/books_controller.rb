@@ -36,6 +36,19 @@ class BooksController < ApplicationController
     end
 
     get '/books/:slug' do
+        @book = Book.find_by_slug(params[:slug])
         erb :'books/show'
+    end
+
+    get '/books/:slug/edit' do
+    end
+
+    get '/books/:slug/review' do
+    end
+
+    get '/books/:slug/delete' do
+    end
+
+    get '/books/:slug/add' do
     end
 end

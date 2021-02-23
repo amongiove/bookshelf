@@ -1,3 +1,29 @@
 <h3><%= flash[:message] %></h3>
 
-individual book page
+<h1><%=@book.title.capitalize%></h1>
+
+<h3>Written by: <%=@book.author.capitalize%></h3>
+
+<h4>Genre(s):</h4>
+    <%@book.genres.each do |genre|%>
+        <li><%=genre.name%></li> 
+    <%end%>
+
+<%@ratings = []%>
+<%@book.reviews.each do |reivew|%>
+    <%@ratings << reivew.rating_value%>
+<%end%>
+<h4> Rating: <%=(@ratings.sum/@ratings.size).to_f%>/5</h4>
+
+<h4>Reviews:</h4>
+    <%@book.reviews.each do |review|%>
+        <li><%=review.review%></li>
+    <%end%>
+
+<h3><a class="button" href="/books/<%=@book.id%>/edit"> Edit Book </a></h3>
+      
+<h3><a class="button" href="/books/<%=@book.id%>/review"> Review this Book </a></h3>
+
+<h3><a class="button" href="/books/<%=@book.id%>/add"> Add this Book to your list</a></h3>
+
+<h3><a class="button" href="/books/<%=@book.id%>/delete"> Delete from list </a></h3>
