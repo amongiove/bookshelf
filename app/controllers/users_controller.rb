@@ -48,6 +48,11 @@ class UsersController < ApplicationController
         redirect to("/home")
     end
 
+    get '/logout' do
+        session.clear
+        redirect to('/login')
+    end
+
     get '/home' do
         if logged_in?
             @user = User.find_by_id(session['user_id'])
