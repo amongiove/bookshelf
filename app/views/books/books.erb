@@ -1,1 +1,10 @@
-list all books with links
+<h1>Browse the BookShelf</h1>
+
+<h3>Browse by Rating</h3> 
+
+<h3>Browse by Genre</h3> 
+
+<h3> Unsure what you're looking for? Browse all available books below:</h3>
+<%@books.each do |book|%>
+    <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a> --- <%=book.author.split.map(&:capitalize).join(' ')%></li><br>
+<%end%>
