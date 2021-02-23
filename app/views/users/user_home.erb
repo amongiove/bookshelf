@@ -1,1 +1,20 @@
-user home page 
+<h1>Welcome to your BookShelf</h1>
+
+<h3>Books <%=@user.username.capitalize%> wants to read.</h3>
+<%@books.each do |book|%>
+    <%if @user_books.find_by_id(book.id).read == false %>
+        <li><%=book.title%></li>
+    <%end%>
+<%end%>
+
+
+<h3>Books <%=@user.username.capitalize%> has read</h3>
+<%@books.each do |book|%>
+    <%if @user_books.find_by_id(book.id).read == true %>
+        <li><%=book.title%></li>
+    <%end%>
+<%end%>
+
+<h3><a class="button" href="/books/new"> Add a new Book </a></h3>
+      
+<h3><a class="button" href="/books"> See all Books </a></h3>
