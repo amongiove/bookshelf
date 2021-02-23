@@ -65,4 +65,21 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/users' do
+        if logged_in?
+            @users = User.all
+            erb :'users/users'
+        else
+            flash[:message] = "You need to be logged in to see that."
+            redirect to('/')
+        end
+    end
+
+    get '/users/:slug' do
+        @user = User.find_by_slug(params[:slug])
+        @books = Book.all
+        @user_books = @user.user_books
+        erb :'users/show'
+    end
+
 end
