@@ -55,8 +55,31 @@ class BooksController < ApplicationController
     end
 
     get '/books/:slug/review' do
+        @book = Book.find_by_slug(params[:slug])
+        @user = current_user
+        @review = Review.find_by(:book_id => @book.id, :user_id => @user.id)
+        if @review != nil
+            flash[:message] = "Oops! It looks like you have already reviewed this book."
+            redirect to("/books/#{@book.slug}")
+        else
+            erb :'books/review'
+        end
     end
 
+    post '/books/:slug/review' do
+        @book = Book.find_by_slug(params[:slug])
+        if params[:review].empty? || params[:rating].empty?
+            flash[:message] = "Please fill-in all available fields"
+            redirect to("/books/#{@book.slug}/review")
+        else
+            @review = Review.create(:review => params[:review], :rating_value => params[:rating], :book_id => @book.id, :user_id => current_user.id)
+            @userbook = UserBook.find_or_create_by(:user_id => current_user.id, :book_id => @book.id)
+            @userbook.read = true
+        end
+        @userbook.save
+        @review.save
+        redirect to('/home')
+    end
 
     get '/books/:slug/add' do
     end

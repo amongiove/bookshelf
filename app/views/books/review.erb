@@ -1,0 +1,15 @@
+<h1><%=@book.title.split.map(&:capitalize).join(' ')%></h1> 
+<h3>Written by: <%=@book.author.split.map(&:capitalize).join(' ')%></h3>
+
+<form method="POST" action="/books/<%=@book.slug%>/review">
+    <label><h4>Write your review below:</h4></label>
+    <input type="text" name="review" id="review">
+
+    <label><h4>Rating</h4></label>
+    <input type="radio" name="rating" value="1">1
+    <input type="radio" name="rating" value="2">2
+    <input type="radio" name="rating" value="3">3
+    <input type="radio" name="rating" value="4">4
+    <input type="radio" name="rating" value="5">5<br><br>
+    <input type="submit" value="Submit Review">
+</form>
