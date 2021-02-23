@@ -2,7 +2,7 @@
 
 <h3>Books <%=@user.username.capitalize%> wants to read.</h3>
 <%@books.each do |book|%>
-    <%if @user_books.find_by_id(book.id).read == false %>
+    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == false %>
         <li><%=book.title%></li>
     <%end%>
 <%end%>
@@ -10,7 +10,7 @@
 
 <h3>Books <%=@user.username.capitalize%> has read</h3>
 <%@books.each do |book|%>
-    <%if @user_books.find_by_id(book.id).read == true %>
+    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == true %>
         <li><%=book.title%></li>
     <%end%>
 <%end%>

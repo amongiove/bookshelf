@@ -1,1 +1,19 @@
-new book form
+<h1>Create a New Book</h1>
+
+<h3><%= flash[:message] %></h3>
+
+<form method="POST" action="/books/new">
+    <label><h4>Title:</h4></label><input type="text" name="title" id="title"><br>
+    <label><h4>Author:</h4></label> <input type="text" name="author" id="author"><br>
+    <label><h4>Genres:</h4></label>
+        <% Genre.all.each do |genre| %>
+            <input type="checkbox" id="genre_<%=genre.id%>" name="book[genre_ids][]" value="<%= genre.id %>">
+            <label><%= genre.name %></label><br>   
+        <%end%>
+    <label><h4>Have you read this book?</h4></label>
+    <input type="radio" name="yes_no" value="true">Yes<br>
+    <input type="radio" name="yes_no" value="false">No<br><br>
+
+    <input type="submit" value="Create Book">
+</form>
+

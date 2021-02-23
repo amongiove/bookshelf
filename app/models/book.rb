@@ -6,7 +6,7 @@ class Book < ActiveRecord::Base
     has_many :reviews
 
     def slug
-        self.username.downcase.split.join('-')
+        self.title.downcase.split.join('-')
     end
     
     def self.find_by_slug(slug)
