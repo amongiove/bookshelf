@@ -1,8 +1,8 @@
 <h3><%= flash[:message] %></h3>
 
-<h1><%=@book.title.capitalize%></h1>
+<h1><%=@book.title.split.map(&:capitalize).join(' ')%></h1>
 
-<h3>Written by: <%=@book.author.capitalize%></h3>
+<h3>Written by: <%=@book.author.split.map(&:capitalize).join(' ')%></h3>
 
 <h4>Genre(s):</h4>
     <%@book.genres.each do |genre|%>
@@ -13,17 +13,28 @@
 <%@book.reviews.each do |reivew|%>
     <%@ratings << reivew.rating_value%>
 <%end%>
-<h4> Rating: <%=(@ratings.sum/@ratings.size).to_f%>/5</h4>
 
-<h4>Reviews:</h4>
-    <%@book.reviews.each do |review|%>
-        <li><%=review.review%></li>
-    <%end%>
+<%if !@book.reviews.empty? %>
+    <h4>Average Rating: <%=(@ratings.sum/@ratings.size).to_f%>/5</h4>
 
-<h3><a class="button" href="/books/<%=@book.id%>/edit"> Edit Book </a></h3>
+    <h4>Reviews:</h4>
+        <%@book.reviews.each do |review|%>
+            <li><%=review.review%></li>
+        <%end%>
+<%else%>
+    <h4>This book has no reviews.</h4>
+<%end%>
+
       
-<h3><a class="button" href="/books/<%=@book.id%>/review"> Review this Book </a></h3>
+<form action="/books/<%=@book.slug%>/review" method="GET">
+    <input type="submit" name="submit" value="Review this Book">
+</form><br>
 
-<h3><a class="button" href="/books/<%=@book.id%>/add"> Add this Book to your list</a></h3>
+<form action="/books/<%=@book.slug%>/add" method="GET">
+    <input type="submit" name="submit" value="Add to your BookShelf">
+</form><br>
 
-<h3><a class="button" href="/books/<%=@book.id%>/delete"> Delete from list </a></h3>
+<form action="/books/<%=@book.slug%>/delete" method="POST">
+    <input name="_method" type="hidden" value="delete"> 
+    <input type="submit" name="submit" value="Delete from BookShelf">
+</form>

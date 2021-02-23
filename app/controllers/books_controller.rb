@@ -40,14 +40,23 @@ class BooksController < ApplicationController
         erb :'books/show'
     end
 
-    get '/books/:slug/edit' do
+    delete '/books/:slug/delete' do
+        if logged_in?
+            @book = Book.find_by_slug(params[:slug])
+            if @book.user_ids.include?(current_user.id)
+                @book.users.delete(User.find_by_id(current_user.id))
+                flash[:message] = "Book removed from Bookshelf"
+                redirect to("/home")
+            else
+                flash[:message] = "Please login to edit a list."
+                redirect to("/")
+            end
+        end
     end
 
     get '/books/:slug/review' do
     end
 
-    get '/books/:slug/delete' do
-    end
 
     get '/books/:slug/add' do
     end
