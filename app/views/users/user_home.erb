@@ -21,8 +21,18 @@
     <%end%>
 <%end%>
 
-<h3><a class="button" href="/books/new"> Add a new Book </a></h3>
-      
-<h3><a class="button" href="/books"> See all Books </a></h3>
+<form action="/books/new" method="GET">
+    <input type="submit" name="submit" value="Add a new Book">
+</form><br>
 
-<h3><a class="button" href="/logout"> Logout </a></h3>
+<form action="/books" method="GET">
+    <input type="submit" name="submit" value="See all Books">
+</form><br>
+
+<form action="/users" method="GET">
+    <input type="submit" name="submit" value="See what others are reading">
+</form><br>
+
+<form action="/logout" method="GET">
+    <input type="submit" name="submit" value="Logout">
+</form>
