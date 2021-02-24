@@ -123,6 +123,23 @@ class BooksController < ApplicationController
     end
 
     get '/books-by-rating' do
+        @books = Book.all
+        @reviews = Review.all
+
+        @average_ratings = {}
+        @books.each do |book|
+            @ratings = []
+            book.reviews.each do |reivew|
+                @ratings << reivew.rating_value
+            end
+        
+            if book.reviews.empty?
+                @average_ratings[book.id] = 0
+            else
+                @average_ratings[book.id] = ((@ratings.sum)/(@ratings.size).to_f)
+            end
+        end
+        @sorted_averages = @average_ratings.sort_by{|_key, value| value}.reverse
         erb :'books/rating'
     end
 

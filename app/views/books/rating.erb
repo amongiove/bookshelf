@@ -1,5 +1,12 @@
-rating view
+<h1>See our Favorites</h1>
 
+<%@sorted_averages.each do |array|%>
+    <li><%if array[1] == 0%>
+        Not Yet Rated -----<a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a> by <%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%>
+    <%else%>
+        <%=array[1]%>-----<a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a> by <%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%>
+    <%end%></li><br>
+<%end%>
 
 <form action="/books" method="GET">
     <input type="submit" name="submit" value="Return to all Books">
@@ -8,3 +15,4 @@ rating view
 <form action="/home" method="GET">
     <input type="submit" name="submit" value="Return Home">
 </form><br>
+
