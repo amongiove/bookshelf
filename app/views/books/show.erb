@@ -37,4 +37,8 @@
 <form action="/books/<%=@book.slug%>/delete" method="POST">
     <input name="_method" type="hidden" value="delete"> 
     <input type="submit" name="submit" value="Delete from BookShelf">
-</form>
+</form><br>
+
+<form action="/home" method="GET">
+    <input type="submit" name="submit" value="Return Home">
+</form><br>

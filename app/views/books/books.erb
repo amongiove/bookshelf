@@ -10,3 +10,8 @@
 <%@books.each do |book|%>
     <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a> --- <%=book.author.split.map(&:capitalize).join(' ')%></li><br>
 <%end%>
+
+
+<form action="/home" method="GET">
+    <input type="submit" name="submit" value="Return Home">
+</form><br>
