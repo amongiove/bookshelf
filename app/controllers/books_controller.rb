@@ -85,7 +85,12 @@ class BooksController < ApplicationController
     get '/books/:slug/add' do
         if logged_in?
             @book = Book.find_by_slug(params[:slug])
-            erb :'/books/add'
+            if UserBook.find_by(:book_id => @book.id, :user_id => current_user.id) != nil
+                flash[:message] = "Oops! It looks like this book is already on your BookShelf."
+                redirect to('/home')
+            else
+                erb :'/books/add'
+            end
         else
             flash[:message] = "You must be logged into add to a list."
             redirect to('/login')
@@ -93,7 +98,8 @@ class BooksController < ApplicationController
     end
     
     post '/books/:slug/add' do
-        puts "time to add book"
+        @book = Book.find_by_slug(params[:slug])
+
     end  
         
 end
