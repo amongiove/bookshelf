@@ -83,5 +83,17 @@ class BooksController < ApplicationController
     end
 
     get '/books/:slug/add' do
+        if logged_in?
+            @book = Book.find_by_slug(params[:slug])
+            erb :'/books/add'
+        else
+            flash[:message] = "You must be logged into add to a list."
+            redirect to('/login')
+        end
     end
+    
+    post '/books/:slug/add' do
+        puts "time to add book"
+    end  
+        
 end

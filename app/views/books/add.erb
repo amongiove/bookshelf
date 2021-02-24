@@ -1,0 +1,15 @@
+<h3><%= flash[:message] %></h3>
+
+<h1>Add <%=@book.title.split.map(&:capitalize).join(' ')%> to your BookShelf</h1>
+
+<h3>Written by: <%=@book.author.split.map(&:capitalize).join(' ')%></h3>
+
+ <form action="/books/<%=@book.slug%>/add" method="POST">
+    <label><h4>Have you already read this book?</h4></label>
+        <input type="radio" name="read?" value="true">Yes, I have read this book.<br>
+        <input type="radio" name="read?" value="false">No, but I am interested in reading this book.<br><br>
+    
+    <input type="submit" value="Add Book">
+</form>
+
+**think about adding review? option - IF already read**
