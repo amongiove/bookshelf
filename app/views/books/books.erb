@@ -1,16 +1,17 @@
 <h1>Browse the BookShelf</h1>
 
-<h3>Browse by Rating</h3> 
-** add in organization of books by rating **
+<form action="/books-by-rating" method="GET">
+    <input type="submit" name="submit" value="Browse by Rating">
+</form>
 
-<h3>Browse by Genre</h3> 
-** add in organization of books by genre **
+<form action="/books-by-genre" method="GET">
+    <input type="submit" name="submit" value="Browse by Genre">
+</form><br>
 
 <h3> Unsure what you're looking for? Browse all available books below:</h3>
 <%@books.each do |book|%>
     <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a> --- <%=book.author.split.map(&:capitalize).join(' ')%></li><br>
 <%end%>
-
 
 <form action="/home" method="GET">
     <input type="submit" name="submit" value="Return Home">

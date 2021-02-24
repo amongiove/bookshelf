@@ -1,0 +1,19 @@
+<h1><%= @genre.name%></h1>
+
+<%@books.each do |book|%>
+    <% if book.genres.include?(@genre)%>
+        <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a> --- <%=book.author.split.map(&:capitalize).join(' ')%></li><br>
+    <%end%>
+<%end%>
+
+<form action="/books-by-genre" method="GET">
+    <input type="submit" name="submit" value="Return to Genres">
+</form><br>
+
+<form action="/books" method="GET">
+    <input type="submit" name="submit" value="Return to all Books">
+</form><br>
+
+<form action="/home" method="GET">
+    <input type="submit" name="submit" value="Return Home">
+</form><br>

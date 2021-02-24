@@ -121,5 +121,18 @@ class BooksController < ApplicationController
         @userbook.save
         redirect to("/books/#{@book.slug}")   
     end
-        
+
+    get '/books-by-rating' do
+        erb :'books/rating'
+    end
+
+    get '/books-by-genre' do
+        erb :'books/genre'
+    end
+    
+    post '/books-by-genre' do
+        @books = Book.all
+        @genre = Genre.find_by_id(params[:genre_id])
+        erb :'books/show_genre'
+    end
 end

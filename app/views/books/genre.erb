@@ -1,0 +1,15 @@
+<form action="/books-by-genre" method="POST">
+    <label><h2>Select a Genre Below</h2></label>  
+        <% Genre.all.each do |genre| %>
+            <input type="radio" id="genre_<%=genre.id%>" name="genre_id" value="<%= genre.id %>", limit="1">
+            <label><%= genre.name %></label><br>   
+        <%end%>
+    <input type="submit" value="View Books"> 
+
+<form action="/books" method="GET">
+    <input type="submit" name="submit" value="Return to all Books">
+</form><br>
+
+<form action="/home" method="GET">
+    <input type="submit" name="submit" value="Return Home">
+</form><br>
