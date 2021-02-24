@@ -108,16 +108,16 @@ class BooksController < ApplicationController
         redirect to('/home')
     end  
 
-    get '/books/:slug/read' do
-        #can i make this a pop up window vs. own page??
-        @book = Book.find_by_slug(params[:slug])
-        erb :'/books/read'  
-    end
+    # get '/books/:slug/read' do
+    #     #can i make this a pop up window vs. own page??
+    #     @book = Book.find_by_slug(params[:slug])
+    #     erb :'/books/read'  
+    # end
 
     post '/books/:slug/read' do
         @book = Book.find_by_slug(params[:slug])
         @userbook = UserBook.find_by(:user_id => current_user.id, :book_id => @book.id)
-        @userbook.read = params[:"yes_no"]
+        @userbook.read = true
         @userbook.save
         redirect to("/books/#{@book.slug}")   
     end
