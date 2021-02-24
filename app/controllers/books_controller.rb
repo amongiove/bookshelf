@@ -107,5 +107,11 @@ class BooksController < ApplicationController
 
         redirect to('/home')
     end  
+
+    get '/books/:slug/read' do
+        #can i make this a pop up window vs. own page??
+        @book = Book.find_by_slug(params[:slug])   
+
+    end
         
 end
