@@ -99,7 +99,13 @@ class BooksController < ApplicationController
     
     post '/books/:slug/add' do
         @book = Book.find_by_slug(params[:slug])
+        @book.users << current_user    
+        @book.save
+        @userbook = UserBook.find_by(:user_id => current_user.id, :book_id => @book.id)
+        @userbook.read = params[:"read?"]
+        @userbook.save
 
+        redirect to('/home')
     end  
         
 end
