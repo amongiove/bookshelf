@@ -26,18 +26,29 @@
 <%end%><br>
 
       
-<form action="/books/<%=@book.slug%>/review" method="GET">
-    <input type="submit" name="submit" value="Review this Book">
-</form><br>
+<%if UserBook.find_by(:user_id => current_user.id, :book_id => @book.id) == nil %>
+    <form action="/books/<%=@book.slug%>/add" method="GET">
+       <input type="submit" name="submit" value="Add to your BookShelf"> 
+    </form><br> 
 
-<form action="/books/<%=@book.slug%>/add" method="GET">
-    <input type="submit" name="submit" value="Add to your BookShelf">
-</form><br>
+<%else%>
+    <%if UserBook.find_by(:user_id => current_user.id, :book_id => @book.id).read == false %>
+        <form action="/books/<%=@book.slug%>/read" method="GET">
+            <input type="submit" name="submit" value="Have you read this book?">
+        </form><br>
+    <%else%>
+        <%if Review.find_by(:user_id => current_user.id, :book_id => @book.id) == nil%>
+            <form action="/books/<%=@book.slug%>/review" method="GET">
+                <input type="submit" name="submit" value="Review this Book">
+            </form><br>
+        <%end%>
 
-<form action="/books/<%=@book.slug%>/delete" method="POST">
-    <input name="_method" type="hidden" value="delete"> 
-    <input type="submit" name="submit" value="Delete from BookShelf">
-</form><br>
+        <form action="/books/<%=@book.slug%>/delete" method="POST">
+            <input name="_method" type="hidden" value="delete"> 
+            <input type="submit" name="submit" value="Delete from BookShelf">
+        </form><br>
+    <%end%>
+<%end%>
 
 <form action="/home" method="GET">
     <input type="submit" name="submit" value="Return Home">
