@@ -8,8 +8,11 @@ gem 'require_all'
 gem 'thin', '~>1.8'
 gem 'bcrypt'
 gem "tux"
-# gem 'rack-flash3'
 gem 'sinatra-flash'
+
+gem 'rest-client', '~> 2.1'
+gem 'json', '~> 2.3', '>= 2.3.1'
+gem 'dotenv', '~> 2.7', '>= 2.7.6'
 
 group :development, :test do
   gem 'sqlite3'
