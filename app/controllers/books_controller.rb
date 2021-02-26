@@ -152,4 +152,11 @@ class BooksController < ApplicationController
         @genre = Genre.find_by_id(params[:genre_id])
         erb :'books/show_genre'
     end
+
+    get '/recommendations' do
+        erb :'books/recommendations'
+    end
+
+    post '/recommendations' do 
+    end
 end

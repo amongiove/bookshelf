@@ -13,6 +13,8 @@
     <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a> --- <%=book.author.split.map(&:capitalize).join(' ')%></li><br>
 <%end%>
 
+<h3>Still want more? Check out some <a href="/recommendations">recommendations.</a></h3>
+
 <form action="/home" method="GET">
     <input type="submit" name="submit" value="Return Home">
 </form><br>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_180145) do
+ActiveRecord::Schema.define(version: 2021_02_26_215037) do
 
   create_table "book_genres", force: :cascade do |t|
     t.integer "book_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_180145) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.string "category_id"
   end
 
   create_table "reviews", force: :cascade do |t|
