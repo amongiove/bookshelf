@@ -2,11 +2,11 @@ require 'sinatra'
 require 'active_record'
 require 'require_all'
 
+require 'dotenv'
+    Dotenv.load('file1.env', 'file2.env')
+
 configure :development do
     ENV['SINATRA_ENV'] ||= "development"
-
-    require 'dotenv'
-    Dotenv.load('file1.env', 'file2.env')
 
     require 'bundler/setup'
     Bundler.require(:default, ENV['SINATRA_ENV'])

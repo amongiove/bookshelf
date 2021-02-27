@@ -1,6 +1,9 @@
 require './config/environment'
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'dotenv/load'
+require 'rest-client'
+require 'json'
 
 class ApplicationController < Sinatra::Base
 
