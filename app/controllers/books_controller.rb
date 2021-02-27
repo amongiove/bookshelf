@@ -158,5 +158,9 @@ class BooksController < ApplicationController
     end
 
     post '/recommendations' do 
+        category_id = params[:genre_category_id]
+        @genre = Genre.find_by(:category_id => category_id)
+        books = PenguinApi.get_books(category_id)
+        self.get_book_info()
     end
 end

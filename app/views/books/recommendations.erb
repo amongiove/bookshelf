@@ -1,1 +1,7 @@
-recommendations
+<form action="/recommendations" method="POST">
+    <label><h2>Select a Genre Below to View Recommendations</h2></label>  
+        <% Genre.all.each do |genre| %>
+            <input type="radio" id="genre_<%=genre.category_id%>" name="genre_category_id" value="<%= genre.category_id %>">
+            <label><%= genre.name %></label><br>   
+        <%end%>
+    <input type="submit" value="View Recommendations"> 
