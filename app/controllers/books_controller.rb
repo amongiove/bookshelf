@@ -1,3 +1,4 @@
+require 'pry'
 class BooksController < ApplicationController
     
     get '/books' do
@@ -164,4 +165,22 @@ class BooksController < ApplicationController
         @books = TransformData.get_book_info(penguin_data)
         erb :'/books/show_recs'
     end
+
+    post '/recommendations/add' do
+        @book = Book.find_by(:title => params[:book][":title"].downcase, :author => params[:book][":author"].downcase)
+        if @book != nil
+            flash[:message] = "This book already exists in our database."
+            redirect to("/books/#{@book.slug}")
+        else
+            @book = Book.create(:title => params[:book][":title"].downcase, :author => params[:book][":author"].downcase, :created_by_id => current_user.id)
+            @book.genres << Genre.find_by_id(params[:book][":genre"])
+            @book.users << current_user
+            @book.save
+            @userbook = UserBook.find_by(:user_id => current_user.id, :book_id => @book.id)
+            @userbook.read = false
+            @userbook.save
+        end
+        redirect to("/books/#{@book.slug}")
+    end
+
 end

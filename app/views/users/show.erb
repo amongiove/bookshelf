@@ -4,7 +4,7 @@
 <%@books.each do |book|%>
     <%if @user_books.find_by(:user_id => @user.id, :book_id => book.id) != nil
         if @user_books.find_by(:user_id => @user.id, :book_id => book.id).read == false %>
-            <li><a href="/books/<%=book.slug%>"><%=book.title%></a></li>
+            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
         <%end%>
     <%end%>
 <%end%>
@@ -14,7 +14,7 @@
 <%@books.each do |book|%>
     <%if @user_books.find_by(:user_id => @user.id, :book_id => book.id) != nil
         if @user_books.find_by(:user_id => @user.id, :book_id => book.id).read == true %>
-            <li><a href="/books/<%=book.slug%>"><%=book.title%></a></li>
+            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
         <%end%>
     <%end%>
 <%end%>

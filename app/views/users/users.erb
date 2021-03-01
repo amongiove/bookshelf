@@ -1,7 +1,9 @@
 <h1>See what your fellow bookworms are reading</h1>
 
 <%@users.each do |user|%>
-    <li><a href="/users/<%=user.slug%>"><%=user.username.split.map(&:capitalize).join(' ')%></a></li><br>
+    <%if user != current_user%>
+        <li><a href="/users/<%=user.slug%>"><%=user.username.split.map(&:capitalize).join(' ')%></a></li><br>
+    <%end%>
 <%end%>
 
 

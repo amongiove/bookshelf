@@ -1,3 +1,18 @@
 <h1>Recommendations for <%=@genre.name%></h1>
-<%@books%>
-    
+
+<form action="/recommendations/add" method="POST">
+
+    <label><h3>Select the book you would like to add to your BookShelf</h3><label>
+    <% @books.each do |book| %>
+        <input type="radio" id="book" name="book[:title]" value="<%= book[:title] %>">
+        <input type="hidden" id="book" name="book[:author]" value="<%= book[:author] %>">
+        <input type="hidden" id="book" name="book[:genre]" value="<%= @genre.id%>">
+            <label><%=book[:title]%> written by <%=book[:author]%></label><br>
+    <%end%>
+        <input type="submit" value="Add Book"><br>
+</form>
+
+<br>
+<form action="/home" method="GET">
+    <input type="submit" name="submit" value="Return Home">
+</form><br>
