@@ -1,38 +1,51 @@
-<h3><%= flash[:message] %></h3>
+ <div class="bg"> 
+    <section id="user_home" class="users">
+        <div class="error">
+            <p><%= flash[:message] %></p>
+        <div>
 
-<h1>Welcome to your BookShelf</h1>
+        <h1>Welcome to your BookShelf</h1>
+        <div class="booklists">
+            <h3 class="shelf-title">Books <%=@user.username.capitalize%> wants to read</h3>
+            <%@books.each do |book|%>
+                <div class="row">
+                    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
+                        if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == false %>
+                            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
+                        <%end%>
+                    <%end%>
+                </div>
+            <%end%>
+        </div>
 
-<h3>Books <%=@user.username.capitalize%> wants to read.</h3>
-<%@books.each do |book|%>
-    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
-        if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == false %>
-            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
-        <%end%>
-    <%end%>
-<%end%>
+        <div class="booklists">    
+            <h3 class="shelf-title">Books <%=@user.username.capitalize%> has read</h3>
+            <%@books.each do |book|%>
+                <div class="row">
+                    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
+                        if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == true %>
+                            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
+                        <%end%>
+                    <%end%>
+                </div>
+            <%end%>
+            <br>
+        </div>
+        <!---buttons moved to navbar
+        <form action="/books/new" method="GET">
+            <input type="submit" name="submit" value="Add a new Book">
+        </form><br>
 
+        <form action="/books" method="GET">
+            <input type="submit" name="submit" value="See all Books">
+        </form><br>
 
-<h3>Books <%=@user.username.capitalize%> has read</h3>
-<%@books.each do |book|%>
-    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
-        if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == true %>
-            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
-        <%end%>
-    <%end%>
-<%end%>
-<br>
-<form action="/books/new" method="GET">
-    <input type="submit" name="submit" value="Add a new Book">
-</form><br>
+        <form action="/users" method="GET">
+            <input type="submit" name="submit" value="See what others are reading">
+        </form><br>
 
-<form action="/books" method="GET">
-    <input type="submit" name="submit" value="See all Books">
-</form><br>
-
-<form action="/users" method="GET">
-    <input type="submit" name="submit" value="See what others are reading">
-</form><br>
-
-<form action="/logout" method="GET">
-    <input type="submit" name="submit" value="Logout">
-</form>
+        <form action="/logout" method="GET">
+            <input type="submit" name="submit" value="Logout">
+        </form> -->
+    </section>
+</div>

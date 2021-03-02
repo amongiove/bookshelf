@@ -13,40 +13,46 @@
       
   </head>
   <body>
-      <!--- nav bar -->
-      <nav class="navbar navbar-expand-md">
-    <a class="navbar-brand" href="#">Logo</a>
-    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/books">Books</a>
-            </li>
-            <!--- more items
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li> -->
-        </ul>
-    </div>
-</nav>
-
-      <!--- background test --> 
-      <!---<style>
-        body {background-image:url('/img/bookshelf2.jpg');}
-      </style>-->
+    <!--- nav bar -->      
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <%if logged_in? %>
+            <!---dropdown--> 
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">BookShelf</a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/books/new">Add a new Book</a></li>
+                            <li><a class="dropdown-item" href="/books">See our Library</a></li>
+                            <li><a class="dropdown-item" href="/users">See what others are reading</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+                <!---other links-->
+                <div class="collapse navbar-collapse" id="main-navigation">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                     </ul>
+                </div> 
+            <%end%>
+        </div> 
+    </nav>
+    
 
       <%=yield%>
 
-       <!-- Option 1: Bootstrap Bundle with Popper -->
+      <footer class="footer">
+        Made by Amanda Mongiove
+      </footer>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
       
-      <!-- Option 2: Separate Popper and Bootstrap JS -->
-      <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script> -->
   </body>
 </html>

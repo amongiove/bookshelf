@@ -1,35 +1,54 @@
-body {
+body, html {
+    height: 100%;
     padding: 0;
     margin: 0;
     background: #f2f6e9;
 }
 .navbar {
-    background:#f3bb22;
+    background:#f3bb22a4;
+    margin-bottom: 2rem;
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
 }
-.nav-link,
-.navbar-brand {
+
+#navbarNavDarkDropdown {
+    float: left;
+    background:rgba(0, 0, 0, 0.377);
+    position: fixed;
+}
+
+.nav-link {
+    margin-right: 1em !important;
     color: #fff;
     cursor: pointer;
 }
-.nav-link {
-    margin-right: 1em !important;
-}
 .nav-link:hover {
-    color: #000;
+    color: rgb(10, 94, 62);
 }
 .navbar-collapse {
     justify-content: flex-end;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f3bb22a4;
+    color: white;
+    text-align: center;
+}
+
 .sessions_container {
     background-image: url(https://static.parade.com/wp-content/uploads/2018/08/book-stack-library-club-reading-ftr.jpg);
-    padding: 10%;
+    padding: 15%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-#login {
+#login_signup {
     padding: 1%;
     background-color: rgba(255, 255, 255, 0.705);
     border-radius: 25px;
@@ -41,48 +60,98 @@ body {
     margin-top: 60px;
   }
   
-  .sessions h1 {
+.sessions h1 {
+text-align: center;
+margin-bottom: 40px;
+}
+
+.sessions input {
+display: block;
+margin-bottom: 10px;
+padding: 16px 0 16px 16px;
+width: 100%;
+border-radius: 4px;
+border: 1px solid #657b83;
+background-color: inherit;
+color: black;
+}
+
+.sessions button {
+display: block;
+width: 100%;
+border-radius: 4px;
+padding-top: 16px;
+padding-bottom: 16px;
+margin-top: 40px;
+font-size: 1.2em;
+font-weight: bold;
+border: 0;
+background-color: #628ed2;
+color: white;
+
+-webkit-transition: 0.12s all;
+-moz-transition: 0.12s all;
+-ms-transition: 0.12s all;
+-o-transition: 0.12s all;
+transition: 0.12s all;
+}
+
+.sessions button:hover {
+background-color: #00a7c8;
+cursor: pointer;
+}
+
+.error p {
+color: #FF5B5B;
+font-size: 1.2em;
+}
+
+.bg {
+background-image: url(/img/bottombooks.jpg);
+height: 100%;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+.users h1 {
+   text-align: center;
+    margin-bottom: 5%;
+    color:rgb(21, 95, 14)
+}
+
+.shelf-title {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.booklists {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    color: rgba(247, 246, 243, 0);
+  }
+  
+  .row{
+      text-align: center;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
     text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .sessions input {
-    display: block;
-    margin-bottom: 10px;
-    padding: 16px 0 16px 16px;
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #657b83;
-    background-color: inherit;
-    color: black;
-  }
-  
-  .sessions button {
-    display: block;
-    width: 100%;
-    border-radius: 4px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    margin-top: 40px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 0;
-    background-color: #628ed2;
-    color: white;
-    
-    -webkit-transition: 0.12s all;
-    -moz-transition: 0.12s all;
-    -ms-transition: 0.12s all;
-    -o-transition: 0.12s all;
-    transition: 0.12s all;
-  }
-  
-  .sessions button:hover {
-    background-color: #00a7c8;
-    cursor: pointer;
   }
 
-  .error p {
-    color: #FF5B5B;
-    font-size: 1.2em;
+  .shelf-title {
+      text-align: center;
+  }
+
+  #user_home form {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    color: rgba(247, 246, 243, 0);
   }
