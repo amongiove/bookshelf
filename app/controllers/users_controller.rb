@@ -20,6 +20,10 @@ class UsersController < ApplicationController
                 User.find_by(:email => params[:email]) != nil
                     flash[:message] = "That email is already in use."
                     redirect to("/signup") 
+            elsif
+                params[:password] != params[:reenter_password]
+                flash[:message] = "Passwords do not match."
+                redirect to("/signup") 
             else  
                 @user = User.create(username: params[:username].downcase, email: params[:email].downcase, password_digest: params[:password])
                 session['user_id'] = @user.id  
@@ -43,7 +47,7 @@ class UsersController < ApplicationController
             session['user_id'] = @user.id
         else
             flash[:message] = "Incorrect username and/or password."
-            redirect to('/')
+            redirect to('/login')
         end
         redirect to("/home")
     end
@@ -61,7 +65,7 @@ class UsersController < ApplicationController
             erb :'users/user_home'
         else
             flash[:message] = "You must be logged in to view this page."
-            redirect to("/")
+            redirect to("/login")
         end
     end
 
@@ -71,7 +75,7 @@ class UsersController < ApplicationController
             erb :'users/users'
         else
             flash[:message] = "You need to be logged in to see that."
-            redirect to('/')
+            redirect to('/login')
         end
     end
 
