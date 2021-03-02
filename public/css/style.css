@@ -1,0 +1,82 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #f2f6e9;
+}
+.navbar {
+    background:#f3bb22;
+}
+.nav-link,
+.navbar-brand {
+    color: #fff;
+    cursor: pointer;
+}
+.nav-link {
+    margin-right: 1em !important;
+}
+.nav-link:hover {
+    color: #000;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.sessions_container {
+    background-image: url(https://static.parade.com/wp-content/uploads/2018/08/book-stack-library-club-reading-ftr.jpg);
+    padding: 10%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#login {
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.705);
+}
+
+.sessions {
+    width:  350px;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+  
+  .sessions h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .sessions input {
+    display: block;
+    margin-bottom: 10px;
+    padding: 16px 0 16px 16px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #657b83;
+    background-color: inherit;
+    color: black;
+  }
+  
+  .sessions button {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-top: 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 0;
+    background-color: #628ed2;
+    color: white;
+    
+    -webkit-transition: 0.12s all;
+    -moz-transition: 0.12s all;
+    -ms-transition: 0.12s all;
+    -o-transition: 0.12s all;
+    transition: 0.12s all;
+  }
+  
+  .sessions button:hover {
+    background-color: #00a7c8;
+    cursor: pointer;
+  }
