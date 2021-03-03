@@ -1,20 +1,25 @@
-<h1>Browse the BookShelf</h1>
+<div class="bg">
+    <section id="library" class="books">
+        <h1 class="display-3">Unsure what you are looking for?</h1>
 
-<form action="/books-by-rating" method="GET">
-    <input type="submit" name="submit" value="Browse by Rating">
-</form>
+        <div class="text-center">
+            <a class="btn btn-outline-success" href="/books-by-rating" role="button">Browse by Rating</a>
 
-<form action="/books-by-genre" method="GET">
-    <input type="submit" name="submit" value="Browse by Genre">
-</form><br>
+            <a class="btn btn-outline-success" href="/books-by-genre" role="button">Browse by Genre</a><br>
+        </div><br>
+        <h3 small class="text-muted">Browse our Library below.</h3><br><br>
 
-<h3> Unsure what you're looking for? Browse all available books below:</h3>
-<%@books.each do |book|%>
-    <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a> --- <%=book.author.split.map(&:capitalize).join(' ')%></li><br>
-<%end%>
+        <div class="container">
+            <div class="row row-cols-3">
+                <%@books.each do |book|%>
+                    <div class="col"><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a>
+                    <p small class="text-muted"><%=book.author.split.map(&:capitalize).join(' ')%></p></div>
+                <%end%>
+            </div>
+        </div>
 
-<h3>Still want more? Check out some <a href="/recommendations">recommendations.</a></h3>
-
-<form action="/home" method="GET">
-    <input type="submit" name="submit" value="Return Home">
-</form><br>
+        <div class="text-center">
+            <a class="btn btn-success" href="/recommendations" role="button">Still want more? Check out some recommendations here.</a>
+        </div>
+    </section>
+</div>

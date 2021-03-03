@@ -1,7 +1,7 @@
 <div class="user-container">
     <section id="all-users" class="users">  
         <h2 class="display-4">What are other members reading?</h2>
-        <p small class="text-muted">Select a user below to check out their BookShelves</p>
+        <p small class="text-muted">Select a user below to check out their BookShelves</p><br>
         <div class="list-group">
             <%@users.each do |user|%>
                 <%if user != current_user%>
@@ -9,10 +9,5 @@
                 <%end%>
             <%end%>
         </div>
-
-        <!--now on nav bar-->
-        <!---<form action="/home" method="GET">
-            <input type="submit" name="submit" value="Return Home">
-        </form><br>-->
     </section>
 </div>

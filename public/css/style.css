@@ -115,85 +115,95 @@ background-repeat: no-repeat;
 }
 
 .display-3 {
-   text-align: center;
-    margin-bottom: 5%;
-    color:rgb(21, 95, 14);
+text-align: center;
+margin-bottom: 2%;
+color:rgb(21, 95, 14);
 
 }
 
 .shelf-title {
-    color: #333;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+color: #333;
+font-size: 1.3rem;
+font-weight: 700;
+margin-bottom: 20px;
+text-transform: uppercase;
 }
 
 .booklists {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    color: rgba(247, 246, 243, 0);
-  }
+float: left;
+width: 50%;
+padding: 10px;
+color: rgba(247, 246, 243, 0);
+}
   
-  .row{
-      text-align: center;
-  }
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
+.row{
+  text-align: center;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+text-align: center;
+}
+
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+padding: 16px;
+text-align: center;
+background-color: #d4d3d3;
+}  
+
+.shelf-title {
     text-align: center;
-  }
+}
 
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    padding: 16px;
-    text-align: center;
-    background-color: #d4d3d3;
-  }  
+#user_home form {
+float: left;
+width: 25%;
+padding: 10px;
+color: rgba(247, 246, 243, 0);
+}
 
-  .shelf-title {
-      text-align: center;
-  }
-
-  #user_home form {
-    float: left;
-    width: 25%;
-    padding: 10px;
-    color: rgba(247, 246, 243, 0);
-  }
-
-  .user-container {
-      background-image: url(/img/bottombooks.jpg);
-      padding: 10%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      
-  }
-
-  .users h2, p {
-      text-align: center;
-  }
-
-  .users h2 {
-      color: rgb(21, 95, 14);
-  }
-
-  .list-group {
-      text-align: center;
-      font-weight: bold;
-  }
-  /* .book_container {
-    background-image: url(/img/cork-board.png);
-    padding: 15%;
+.user-container {
+    background-image: url(/img/bottombooks.jpg);
+    padding: 10%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
+}
+
+.users h2, p {
+    text-align: center;
+}
+
+.users h2 {
+    color: rgb(21, 95, 14);
+}
+
+.list-group {
+    text-align: center;
+    font-weight: bold;
+}
+
+.library-title {
+    text-align: center;
+    color: rgb(69, 70, 71);
+}
+
+#library h3 {
+    text-align: center;
+}
+
+/* .book_container {
+background-image: url(/img/cork-board.png);
+padding: 15%;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
 
 .book-header {
-    text-align: center;
+text-align: center;
 } */
 
