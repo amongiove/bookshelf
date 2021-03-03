@@ -1,12 +1,18 @@
-<h1>See what your fellow bookworms are reading</h1>
+<div class="user-container">
+    <section id="all-users" class="users">  
+        <h2 class="display-4">What are other members reading?</h2>
+        <p small class="text-muted">Select a user below to check out their BookShelves</p>
+        <div class="list-group">
+            <%@users.each do |user|%>
+                <%if user != current_user%>
+                    <a href="/users/<%=user.slug%>" class="list-group-item list-group-item-action"><%=user.username.split.map(&:capitalize).join(' ')%></a>
+                <%end%>
+            <%end%>
+        </div>
 
-<%@users.each do |user|%>
-    <%if user != current_user%>
-        <li><a href="/users/<%=user.slug%>"><%=user.username.split.map(&:capitalize).join(' ')%></a></li><br>
-    <%end%>
-<%end%>
-
-
-<form action="/home" method="GET">
-    <input type="submit" name="submit" value="Return Home">
-</form><br>
+        <!--now on nav bar-->
+        <!---<form action="/home" method="GET">
+            <input type="submit" name="submit" value="Return Home">
+        </form><br>-->
+    </section>
+</div>

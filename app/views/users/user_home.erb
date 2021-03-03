@@ -4,31 +4,35 @@
             <p><%= flash[:message] %></p>
         <div>
 
-        <h1>Welcome to your BookShelf</h1>
+        <h1 class="display-3">Welcome to your BookShelf</h1>
         <div class="booklists">
-            <h3 class="shelf-title">Books <%=@user.username.capitalize%> wants to read</h3>
-            <%@books.each do |book|%>
-                <div class="row">
-                    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
-                        if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == false %>
-                            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
+            <div class="card">
+                <h3 class="shelf-title">Books <%=@user.username.capitalize%> wants to read</h3>
+                <%@books.each do |book|%>
+                    <div class="row">
+                        <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
+                            if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == false %>
+                                <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
+                            <%end%>
                         <%end%>
-                    <%end%>
-                </div>
-            <%end%>
+                    </div>
+                <%end%>
+            </div>
         </div>
 
-        <div class="booklists">    
-            <h3 class="shelf-title">Books <%=@user.username.capitalize%> has read</h3>
-            <%@books.each do |book|%>
-                <div class="row">
-                    <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
-                        if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == true %>
-                            <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
+        <div class="booklists">   
+            <div class="card"> 
+                <h3 class="shelf-title">Books <%=@user.username.capitalize%> has read</h3>
+                <%@books.each do |book|%>
+                    <div class="row">
+                        <%if @user_books.find_by(:user_id => current_user.id, :book_id => book.id) != nil
+                            if @user_books.find_by(:user_id => current_user.id, :book_id => book.id).read == true %>
+                                <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></li>
+                            <%end%>
                         <%end%>
-                    <%end%>
-                </div>
-            <%end%>
+                    </div>
+                <%end%>
+            </div>
             <br>
         </div>
         <!---buttons moved to navbar
