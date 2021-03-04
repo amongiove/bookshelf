@@ -10,12 +10,13 @@ body, html {
     top: 0;
     position: -webkit-sticky;
     position: sticky;
+    z-index: 950;
 }
 
 #navbarNavDarkDropdown {
     float: left;
     background:rgba(0, 0, 0, 0.377);
-    position: fixed;
+    position: absolute;
 }
 
 .nav-link {
@@ -46,6 +47,11 @@ body, html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.sessions_container h1 {
+    background-color: rgba(255, 255, 255, 0.411);
+    border-radius: 70px;
 }
 
 #login_signup {
@@ -165,9 +171,10 @@ padding: 10px;
 color: rgba(247, 246, 243, 0);
 }
 
-.user-container {
-    background-image: url(/img/bottombooks.jpg);
-    padding: 10%;
+.user_container {
+    background-image: url(https://static.parade.com/wp-content/uploads/2018/08/book-stack-library-club-reading-ftr.jpg);
+    padding-top: 0%;
+    padding-bottom: 40%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -194,6 +201,12 @@ color: rgba(247, 246, 243, 0);
 #library h3 {
     text-align: center;
 }
+
+.user-list {
+    position: center;
+    color: rgba(255, 255, 255, 0.61);
+}
+
 
 /* .book_container {
 background-image: url(/img/cork-board.png);

@@ -12,8 +12,10 @@
         <div class="container">
             <div class="row row-cols-3">
                 <%@books.each do |book|%>
-                    <div class="col"><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a>
-                    <p small class="text-muted"><%=book.author.split.map(&:capitalize).join(' ')%></p></div>
+                    <div class="row">
+                        <div class="col"><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a>
+                        <p small class="text-muted"><%=book.author.split.map(&:capitalize).join(' ')%></p></div>
+                    </div>
                 <%end%>
             </div>
         </div>

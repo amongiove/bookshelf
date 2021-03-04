@@ -1,13 +1,17 @@
-<div class="user-container">
+<div class="user_container">
     <section id="all-users" class="users">  
         <h2 class="display-4">What are other members reading?</h2>
-        <p small class="text-muted">Select a user below to check out their BookShelves</p><br>
-        <div class="list-group">
-            <%@users.each do |user|%>
-                <%if user != current_user%>
-                    <a href="/users/<%=user.slug%>" class="list-group-item list-group-item-action"><%=user.username.split.map(&:capitalize).join(' ')%></a>
+        <p small class="text-muted">Select a user below to check out their BookShelves</p>
+        <div class="user-list">
+            <div class="container">
+                <%@users.each do |user|%>
+                    <div class="row">
+                        <%if user != current_user%>
+                            <div class="col"><a href="/users/<%=user.slug%>" class="list-group-item list-group-item-action"><%=user.username.split.map(&:capitalize).join(' ')%></a></div>
+                        <%end%>
+                    </div>    
                 <%end%>
-            <%end%>
+            </div>
         </div>
     </section>
 </div>
