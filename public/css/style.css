@@ -120,11 +120,10 @@ background-position: center;
 background-repeat: no-repeat;
 }
 
-.display-3 {
+.display-3, .display-4 {
 text-align: center;
 margin-bottom: 2%;
 color:rgb(21, 95, 14);
-
 }
 
 .shelf-title {
@@ -202,9 +201,28 @@ color: rgba(247, 246, 243, 0);
     text-align: center;
 }
 
-.user-list {
-    position: center;
-    color: rgba(255, 255, 255, 0.61);
+.list-group-item.list-group-item-action {
+    background-color: rgba(245, 244, 245, 0.13);
+}
+
+.rating {
+    background-color:transparent;
+    padding-bottom: 40%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.genre-option {
+    margin-left: 40%;
+}
+
+.genre {
+    background-image: url(https://storage.googleapis.com/spirituality-health/images/Articles/_articleSummaryImage/bestbooks.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 12%;
 }
 
 

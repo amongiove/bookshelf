@@ -1,15 +1,24 @@
-<form action="/books-by-genre" method="POST">
-    <label><h2>Select a Genre Below</h2></label>  
-        <% Genre.all.each do |genre| %>
-            <input type="radio" id="genre_<%=genre.id%>" name="genre_id" value="<%= genre.id %>">
-            <label><%= genre.name %></label><br>   
-        <%end%>
-    <input type="submit" value="View Books"> 
+<div class="genre">
+    <form action="/books-by-genre" method="POST">
+        <h2 class="display-4">Which genre would you like to explore?</h2> 
+        <div class="container">
+            <div class="row row-cols-3">
+            <% Genre.all.each do |genre| %>
+            <div class="row">
+                <div class="list-group-item list-group-item-action" >
+                <div class="col"><input type="radio" id="genre_<%=genre.id%>" name="genre_id" value="<%= genre.id %>">
+                <label><%= genre.name %></label></div><br>  
+                </div> 
+            </div>
+            <%end%><br>
+        </div>
+    </div>
+            <div class="text-center">
+                <input class="btn btn-success" type="submit" value="View Books">
+            </div>
+    </form><br><br>
 
-<form action="/books" method="GET">
-    <input type="submit" name="submit" value="Return to all Books">
-</form><br>
-
-<form action="/home" method="GET">
-    <input type="submit" name="submit" value="Return Home">
-</form><br>
+            <div class="text-center">
+                <a class="btn btn-secondary" href="/books" role="button">Return to the Library</a>
+            </div><br><br>
+</div>

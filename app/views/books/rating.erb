@@ -1,18 +1,19 @@
-<h1>See our Favorites</h1>
+<div class="rating">
+    <section id="browse-by-rating" class="favorites">
+        <h1 class="display-3">See our Favorites</h1>      
+        <%@sorted_averages.each do |array|%>
+            <li><%if array[1] == 0%>
+                Not Yet Rated -----<a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a> by <%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%>
+            <%else%>
+                <%=array[1]%>-----<a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a> by <%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%>
+            <%end%></li><br>
+        <%end%>
 
-<%@sorted_averages.each do |array|%>
-    <li><%if array[1] == 0%>
-        Not Yet Rated -----<a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a> by <%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%>
-    <%else%>
-        <%=array[1]%>-----<a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a> by <%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%>
-    <%end%></li><br>
-<%end%>
+        <div class="text-center">
+            <a class="btn btn-success" href="/books" role="button">Return to the Library</a>
+        </div>
+    </section>
+</div>
 
-<form action="/books" method="GET">
-    <input type="submit" name="submit" value="Return to all Books">
-</form><br>
 
-<form action="/home" method="GET">
-    <input type="submit" name="submit" value="Return Home">
-</form><br>
 
