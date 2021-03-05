@@ -225,6 +225,16 @@ color: rgba(247, 246, 243, 0);
     padding-bottom: 12%;
 }
 
+.rating {
+    background-image: url(http://data.whicdn.com/images/38175280/original.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.ratings-col {
+    text-align: center;
+}
 
 /* .book_container {
 background-image: url(/img/cork-board.png);
