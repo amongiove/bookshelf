@@ -1,7 +1,22 @@
-<form action="/recommendations" method="POST">
-    <label><h2>Select a Genre Below to View Recommendations</h2></label>  
-        <% Genre.all.each do |genre| %>
-            <input type="radio" id="genre_<%=genre.category_id%>" name="genre_category_id" value="<%= genre.category_id %>">
-            <label><%= genre.name %></label><br>   
-        <%end%>
-    <input type="submit" value="View Recommendations"> 
+<div class="genre">
+    <form action="/recommendations" method="POST">
+        <h2 class="display-4">Select a Genre Below to View Recommendations</h2> 
+            <div class="container">
+                <div class="row row-cols-3">
+                <% Genre.all.each do |genre| %>
+                <div class="row">
+                    <div class="list-group-item list-group-item-action" >
+                    <div class="col"><input type="radio" id="genre_<%=genre.category_id%>" name="genre_category_id" value="<%= genre.category_id %>">
+                    <label><%= genre.name %></label></div><br>  
+                    </div> 
+                </div>
+                <%end%><br>
+            </div>
+        </div><br>
+        <div class="text-center">
+                <input class="btn btn-dark" type="submit" value="View Recommendations">
+            </div> 
+    </form>
+</div>
+
+     
