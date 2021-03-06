@@ -151,6 +151,9 @@ class BooksController < ApplicationController
     post '/books-by-genre' do
         @books = Book.all
         @genre = Genre.find_by_id(params[:genre_id])
+        # if @genre.books.count == 0
+        #     flash[:message] = "Sorry, we couldn't find any books in our library that belong to this genre."
+        # end
         erb :'books/show_genre'
     end
 

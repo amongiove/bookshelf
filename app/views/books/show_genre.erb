@@ -1,19 +1,32 @@
-<h1><%= @genre.name%></h1>
+<div class="genre-books">
+    <h1 class="display-3"><%= @genre.name%></h1>
+    <table class="table table-hover" data-link="row">
+            <thead>
+                <tr>
+                    <th class="col-head" scope="col" style="width:40%">Title</th>
+                    <th class="col-head" scope="col" style="width:40%">Author</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <%@books.each do |book|%>
+                    <tr>
+                        <% if book.genres.include?(@genre)%>
+                            <th class="genre-book"><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a></th>
+                            <td class="genre-book"><%=book.author.split.map(&:capitalize).join(' ')%></td>
+                        <%end%></tr>
+                    <%end%>
+            </tbody>
+    </table>
+            <!---<div class="genre-error">
+                <p><%= flash[:message] %></p>
+            <div>-->
+    <br><br>
+     <div class="text-center">
+        <a class="btn btn-success" href="/books-by-genre" role="button">Want to see another genre?</a>
+    </div><br>
 
-<%@books.each do |book|%>
-    <% if book.genres.include?(@genre)%>
-        <li><a href="/books/<%=book.slug%>"><%=book.title.split.map(&:capitalize).join(' ')%></a> --- <%=book.author.split.map(&:capitalize).join(' ')%></li><br>
-    <%end%>
-<%end%>
+    <div class="text-center">
+        <a class="btn btn-outline-secondary" href="/books" role="button">Return to the Library</a>
+    </div>
 
-<form action="/books-by-genre" method="GET">
-    <input type="submit" name="submit" value="Return to Genres">
-</form><br>
-
-<form action="/books" method="GET">
-    <input type="submit" name="submit" value="Return to all Books">
-</form><br>
-
-<form action="/home" method="GET">
-    <input type="submit" name="submit" value="Return Home">
-</form><br>
+</div>

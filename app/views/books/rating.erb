@@ -2,18 +2,18 @@
     <section id="browse-by-rating" class="favorites">
         <h1 class="display-3">See our Favorites</h1> 
         <p small class="text-muted">Select the book you would like to see.</p>
-        <table class="table table-hover">
+        <table class="table table-hover" data-link="row">
             <thead>
                 <tr>
-                    <th class="ratings-col" scope="col" style="width:25%">Rating</th>
-                    <th class="ratings-col" scope="col" style="width:35%">Title</th>
-                    <th class="ratings-col" scope="col" style="width:40%">Author</th>
+                    <th class="col-head" scope="col" style="width:25%">Rating</th>
+                    <th class="col-head" scope="col" style="width:35%">Title</th>
+                    <th class="col-head" scope="col" style="width:40%">Author</th>
                 </tr>
             </thead> 
             <tbody>
                    
                     <%@sorted_averages.each do |array|%>
-                        <tr> 
+                        <tr>
                         <%if array[1] == 0%>
                             <th class="ratings-col" scope="row">Not Yet Rated</th>
                             <td><a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a></td>
@@ -28,7 +28,7 @@
         </table>
 
         <div class="text-center">
-            <a class="btn btn-success" href="/books" role="button">Return to the Library</a>
+            <a class="btn btn-outline-secondary" href="/books" role="button">Return to the Library</a>
         </div>
     </section>
 </div>

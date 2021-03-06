@@ -222,7 +222,7 @@ color: rgba(247, 246, 243, 0);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-bottom: 12%;
+    padding-bottom: 15%;
 }
 
 .rating {
@@ -232,9 +232,27 @@ color: rgba(247, 246, 243, 0);
     background-repeat: no-repeat;
 }
 
-.ratings-col {
+.col-head, .ratings-col, .genre-book {
     text-align: center;
 }
+
+.ratings-col {
+    color: goldenrod;
+}
+
+.genre-books {
+    background-image: url(https://storage.googleapis.com/spirituality-health/images/Articles/_articleSummaryImage/bestbooks.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 40%;
+}
+
+.genre-error p {
+    color: rgb(21, 95, 14);
+    font-size: 1.2em;
+    }
+
 
 /* .book_container {
 background-image: url(/img/cork-board.png);
