@@ -1,18 +1,28 @@
-<h1>Recommendations for <%=@genre.name%></h1>
+<div class="show-recs">
+    <h1 class="display-4">Recommendations for <%=@genre.name%></h1>
+    <div class="container">
+        <form action="/recommendations/add" method="POST">
+            <p small class="text-muted">Select the book you would like to add to your BookShelf</p>
+            <div class="row row-cols-2 g-4">
+                <% @books.each do |book| %>
+                <div class="col">
+                    <div class="card">
+                        <input type="radio" id="book" name="book[:title]" value="<%= book[:title] %>">
+                        <input type="hidden" id="book" name="book[:author]" value="<%= book[:author] %>">
+                        <input type="hidden" id="book" name="book[:genre]" value="<%= @genre.id%>">
+                        <label><%=book[:title]%> written by <%=book[:author]%></label>
+                    </div>
+                </div><br><br>
+                <%end%>
+            </div><br><br>
+                <div class="text-center">
+                    <input class="btn btn-secondary" type="submit" value="Add Book"><br>
+                </div>  
+        </form>
+    </div>
+    <br>
+    <div class="text-center">
+        <a class="btn btn-outline-secondary" href="/books" role="button">Return to the Library</a>
+    </div>
 
-<form action="/recommendations/add" method="POST">
-
-    <label><h3>Select the book you would like to add to your BookShelf</h3><label>
-    <% @books.each do |book| %>
-        <input type="radio" id="book" name="book[:title]" value="<%= book[:title] %>">
-        <input type="hidden" id="book" name="book[:author]" value="<%= book[:author] %>">
-        <input type="hidden" id="book" name="book[:genre]" value="<%= @genre.id%>">
-            <label><%=book[:title]%> written by <%=book[:author]%></label><br>
-    <%end%>
-        <input type="submit" value="Add Book"><br>
-</form>
-
-<br>
-<form action="/home" method="GET">
-    <input type="submit" name="submit" value="Return Home">
-</form><br>
+</div>
