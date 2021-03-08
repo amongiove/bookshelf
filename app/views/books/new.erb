@@ -1,19 +1,62 @@
-<h1>Create a New Book</h1>
+<div class="new-book">    
+    <h1 class="display-3">Create a New Book</h1>
 
-<h3><%= flash[:message] %></h3>
+    <div class="error">
+        <p><%= flash[:message] %></p>
+    <div>
 
-<form method="POST" action="/books/new">
-    <label><h4>Title:</h4></label><input type="text" name="title" id="title"><br>
-    <label><h4>Author:</h4></label> <input type="text" name="author" id="author"><br>
-    <label><h4>Genres:</h4></label>
-        <% Genre.all.each do |genre| %>
-            <input type="checkbox" id="genre_<%=genre.id%>" name="book[genre_ids][]" value="<%= genre.id %>">
-            <label><%= genre.name %></label><br>   
-        <%end%>
-    <label><h4>Have you read this book?</h4></label>
-    <input type="radio" name="yes_no" value="true">Yes<br>
-    <input type="radio" name="yes_no" value="false">No<br><br>
+    <form method="POST" action="/books/new">
+        <div class="row g-3">
+            <div class="col-5 mx-auto">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title">
+            </div>
+            <div class="col-5 mx-auto">
+                <label class="form-label">Author</label>
+                <input type="text" class="form-control" name="author" id="author">
+            </div>
+        </div>
+        <br><br><br>
+        <div class="row g-3">
+            <div class="col-6">
+                <div class="dropdown">
+                    <label class="form-label">Book Genre</label>
+                    <label class="btn btn-outline-secondary dropdown-toggle" type="button" id="sampleDropdownMenu" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select the appropriate genre(s)
+                    </label>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+                        <% Genre.all.each do |genre| %>
+                        <li>
+                        <div  class="form-check">
+                            <div class="dropdown-item">
+                                <input class="form-check-input" type="checkbox" id="genre_<%=genre.id%>" name="book[genre_ids][]" value="<%= genre.id %>">
+                                <label class="form-check-label"><%= genre.name %></label>
+                            </div>
+                        </div>
+                        </li>   
+                        <%end%>
+                    </ul>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="col-6">
+            <label>Have you already read this book?</label>
 
-    <input type="submit" value="Create Book">
-</form>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input"type="radio" name="yes_no" value="true">
+                <label class="form-check-label">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="yes_no" value="false">
+                <label class="form-check-label">No</label>
+            </div>
 
+            </div>
+        </div>     
+    </div>
+    <br><br>
+        <div class="text-center">
+            <input class="btn btn-secondary" type="submit" value="Create Book">
+        </div>
+    </form>
+</div>

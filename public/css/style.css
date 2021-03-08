@@ -20,7 +20,7 @@ body, html {
 }
 
 .nav-link {
-    margin-right: 1em !important;
+    margin-right: 1em;
     color: #fff;
     cursor: pointer;
 }
@@ -240,7 +240,7 @@ color: rgba(247, 246, 243, 0);
     color: goldenrod;
 }
 
-.genre-books, .show-recs {
+.genre-books, .show-recs, .new-book {
     background-image: url(https://storage.googleapis.com/spirituality-health/images/Articles/_articleSummaryImage/bestbooks.jpg);
     background-size: cover;
     background-position: center;
@@ -251,7 +251,11 @@ color: rgba(247, 246, 243, 0);
 .genre-error p {
     color: rgb(21, 95, 14);
     font-size: 1.2em;
-    }
+}
+
+.new-book {
+    padding-bottom: 20% ;
+}
 
 
 /* .book_container {
