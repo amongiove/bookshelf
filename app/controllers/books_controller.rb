@@ -157,9 +157,9 @@ class BooksController < ApplicationController
         erb :'books/show_genre'
     end
 
-    get '/recommendations' do
-        erb :'books/recommendations'
-    end
+    # get '/recommendations' do
+    #     erb :'books/recommendations'
+    # end
 
     post '/recommendations' do 
         category_id = params[:genre_category_id]

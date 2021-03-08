@@ -48,15 +48,15 @@
                     </form><br>
                 <%end%>
 
-                <form action="/books/<%=@book.slug%>/delete" method="POST">
-                    <input name="_method" type="hidden" value="delete"> 
-                    <input type="submit" name="submit" value="Delete from BookShelf">
-                </form><br>
+                <div class="text-center">
+                    <form action="/books/<%=@book.slug%>/delete" method="POST">
+                        <input name="_method" type="hidden" value="delete"> 
+                        <input class="btn btn-secondary" type="submit" name="submit" value="Delete from BookShelf">
+                    </form>
+                </div><br>
             <%end%>
         <%end%>
 
-        <form action="/home" method="GET">
-            <input type="submit" name="submit" value="Return Home">
-        </form><br>
+        
     </section>
 </div>
