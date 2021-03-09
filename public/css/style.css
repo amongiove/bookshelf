@@ -259,10 +259,11 @@ color: rgba(247, 246, 243, 0);
 
 .book_container{
     background-image: url(https://www.desktopbackground.org/download/o/2015/11/10/1040040_wallpapers-books-online-wallpapers-zone_1920x1080_h.jpg);
-    padding: 15%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    padding: 10%;
+    padding-bottom: 20%;
 }
 
 .book-header {
@@ -278,3 +279,24 @@ color: rgb(51, 129, 217);
     padding-bottom: 20%;
 }
 
+input[type="radio"] {
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    /* background-color only for content */
+    border: 3px solid #bbbbbb;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+  }
+  /* appearance for checked radiobutton */
+input[type="radio"]:checked {
+    background-color: gold;
+  }
+  

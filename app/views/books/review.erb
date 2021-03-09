@@ -1,17 +1,29 @@
-<h1><%=@book.title.split.map(&:capitalize).join(' ')%></h1> 
-<h3>Written by: <%=@book.author.split.map(&:capitalize).join(' ')%></h3>
+<div class="book_container">
+     <div class="col-7">
+        <div class="book-header">
+            <h1 class="display-5"><%=@book.title.split.map(&:capitalize).join(' ')%></h1> 
 
-<form method="POST" action="/books/<%=@book.slug%>/review">
-    <label><h4>Write your review below:</h4></label>
-    <input type="text" name="review" id="review">
+            <h4 small class="text-muted"><%=@book.author.split.map(&:capitalize).join(' ')%></h4>
+        </div><br>
 
-    <label><h4>Rating</h4></label>
-    <input type="radio" name="rating" value="1">1
-    <input type="radio" name="rating" value="2">2
-    <input type="radio" name="rating" value="3">3
-    <input type="radio" name="rating" value="4">4
-    <input type="radio" name="rating" value="5">5<br><br>
-    <input type="submit" value="Submit Review">
-</form>
+        <form method="POST" action="/books/<%=@book.slug%>/review">
+            <div class="col-5">
+                <label><h4 class="form-label">Write your review below</h4></label>
 
+                <textarea class="form-control" type="text" name="review" id="review" rows="3"></textarea>
+            </div>
+            <br><br>
+            
+            <label><h4 class="form-label">Rate this book</h4></label><br>
+                    <input class="star" type="radio" name="rating" value="1">&nbsp;&nbsp;
+                    <input class="star" type="radio" name="rating" value="2">&nbsp;&nbsp;
+                    <input class="star" type="radio" name="rating" value="3">&nbsp;&nbsp;
+                    <input class="star" type="radio" name="rating" value="4">&nbsp;&nbsp;
+                    <input class="star" type="radio" name="rating" value="5">&nbsp;&nbsp;
+            <br><br>
+
+            <input class="btn btn-secondary" type="submit" value="Submit Review">
+        </form>
+    </div>
+</div>
 
