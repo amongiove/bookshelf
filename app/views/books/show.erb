@@ -4,59 +4,69 @@
         <div class="error">
             <p><%= flash[:message] %></p>
         </div>
-        <div class="book-header">
-            <h1 class="display-3"><%=@book.title.split.map(&:capitalize).join(' ')%></h1>
-
-            <h3 small class="text-muted">Written by: <%=@book.author.split.map(&:capitalize).join(' ')%></h3>
-        </div>
-        <h4>Genre(s):</h4>
-            <%@book.genres.each do |genre|%>
-                <li><%=genre.name%></li> 
-            <%end%>
-
-        <%@ratings = []%>
-        <%@book.reviews.each do |reivew|%>
-            <%@ratings << reivew.rating_value%>
-        <%end%>
-
-        <%if !@book.reviews.empty? %>
-            <h4>Average Rating: <%=(@ratings.sum/@ratings.size).to_f%>/5</h4>
-
-            <h4>Reviews:</h4>
-                <%@book.reviews.each do |review|%>
-                    <li><%=review.review%></li>
-                <%end%>
-        <%else%>
-            <h4>This book has no reviews.</h4>
-        <%end%><br>
-
-            
-        <%if UserBook.find_by(:user_id => current_user.id, :book_id => @book.id) == nil %>
-            <form action="/books/<%=@book.slug%>/add" method="GET">
-            <input type="submit" name="submit" value="Add to your BookShelf"> 
-            </form><br> 
-
-        <%else%>
-            <%if UserBook.find_by(:user_id => current_user.id, :book_id => @book.id).read == false %>
-                <form action="/books/<%=@book.slug%>/read" method="POST">
-                    <input type="submit" name="submit" value="I have already read this Book.">
-                </form><br>
-            <%else%>
-                <%if Review.find_by(:user_id => current_user.id, :book_id => @book.id) == nil%>
-                    <form action="/books/<%=@book.slug%>/review" method="GET">
-                        <input type="submit" name="submit" value="Review this Book">
-                    </form><br>
-                <%end%>
-
-                <div class="text-center">
-                    <form action="/books/<%=@book.slug%>/delete" method="POST">
-                        <input name="_method" type="hidden" value="delete"> 
-                        <input class="btn btn-secondary" type="submit" name="submit" value="Delete from BookShelf">
-                    </form>
-                </div><br>
-            <%end%>
-        <%end%>
-
         
+        <div class="col-7">
+            <div class="book-header">
+                <h1 class="display-5"><%=@book.title.split.map(&:capitalize).join(' ')%></h1>
+
+                <h4 small class="text-muted"><%=@book.author.split.map(&:capitalize).join(' ')%></h4>
+            </div><br>
+
+            <h4>Genre(s):</h4>
+                <%@book.genres.each do |genre|%>
+                    <%=genre.name%><br>
+                <%end%><br><br>
+
+            <%@ratings = []%>
+            <%@book.reviews.each do |reivew|%>
+                <%@ratings << reivew.rating_value%>
+            <%end%>
+
+            <%if !@book.reviews.empty? %>
+                <h4>Average Rating</h4>
+                <%=(@ratings.sum/@ratings.size).to_f%>/5
+                <br><br><br>
+
+                <h4>Reviews:</h4>
+                    <%@book.reviews.each do |review|%>
+                        <%=review.review%><br>
+                    <%end%>
+            <%else%>
+                <h4>This book has no reviews.</h4>
+            <%end%><br><br>
+
+                
+            <%if UserBook.find_by(:user_id => current_user.id, :book_id => @book.id) == nil %>
+                <div class="text-left">
+                    <form action="/books/<%=@book.slug%>/add" method="GET">
+                        <input class="btn btn-secondary" type="submit" name="submit" value="Add to your BookShelf"> 
+                    </form>
+                </div><br> 
+
+            <%else%>
+                <%if UserBook.find_by(:user_id => current_user.id, :book_id => @book.id).read == false %>
+                    <div class="text-left">
+                        <form action="/books/<%=@book.slug%>/read" method="POST">
+                            <input class="btn btn-secondary" type="submit" name="submit" value="I have already read this Book.">
+                        </form>
+                    </div><br>
+                <%else%>
+                    <%if Review.find_by(:user_id => current_user.id, :book_id => @book.id) == nil%>
+                        <div class="text-left">
+                            <form action="/books/<%=@book.slug%>/review" method="GET">
+                                <input class="btn btn-secondary" type="submit" name="submit" value="Review this Book">
+                            </form>
+                        </div><br>
+                    <%end%>
+
+                    <div class="text-left">
+                        <form action="/books/<%=@book.slug%>/delete" method="POST">
+                            <input name="_method" type="hidden" value="delete"> 
+                            <input class="btn btn-secondary" type="submit" name="submit" value="Delete from BookShelf">
+                        </form>
+                    </div><br>
+                <%end%>
+            <%end%>
+        </div>    
     </section>
 </div>

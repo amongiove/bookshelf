@@ -266,7 +266,8 @@ color: rgba(247, 246, 243, 0);
 }
 
 .book-header {
-text-align: center;
+text-align: left;
+color: rgb(51, 129, 217);
 }
 
 .library-container{
