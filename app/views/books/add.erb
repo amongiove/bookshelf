@@ -1,15 +1,30 @@
-<h3><%= flash[:message] %></h3>
+<div class="book_container"> 
+    <h3><%= flash[:message] %></h3>
 
-<h1>Add <%=@book.title.split.map(&:capitalize).join(' ')%> to your BookShelf</h1>
+    <div class="col-7">
+        <div class="book-header">
+            <h1 class="display-5"><%=@book.title.split.map(&:capitalize).join(' ')%></h1>
 
-<h3>Written by: <%=@book.author.split.map(&:capitalize).join(' ')%></h3>
+            <h4 small class="text-muted"><%=@book.author.split.map(&:capitalize).join(' ')%></h4>
+        </div><br>
 
- <form action="/books/<%=@book.slug%>/add" method="POST">
-    <label><h4>Have you already read this book?</h4></label>
-        <input type="radio" name="read?" value="true">Yes, I have read this book.<br>
-        <input type="radio" name="read?" value="false">No, but I am interested in reading this book.<br><br>
-    
-    <input type="submit" value="Add Book">
-</form>
+        <form action="/books/<%=@book.slug%>/add" method="POST">
+            <div class="col-6">
+            <label><h5>Have you already read this book?</h5></label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"  type="radio" name="read?" value="true">
+                    <label class="form-check-label">Yes, I have read this book.</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="read?" value="false">
+                    <label class="form-check-label">No, but I am interested in reading this book.</label>
+                </div>
+                <br><br>
+            </div>
+            
+            <input class="btn btn-secondary" type="submit" value="Add Book">
+        </form>
+    </div>
+</div>
 
 **think about adding review? option - IF already read**

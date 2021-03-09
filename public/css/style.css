@@ -272,7 +272,7 @@ color: rgb(51, 129, 217);
     padding-bottom: 20%;
 }
 
-input[type="radio"] {
+.star{
     /* remove standard background appearance */
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -289,7 +289,7 @@ input[type="radio"] {
     border-radius: 50%;
   }
   /* appearance for checked radiobutton */
-input[type="radio"]:checked {
+.star:checked {
     background-color: gold;
   }
   
