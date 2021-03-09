@@ -6,7 +6,7 @@ body, html {
 }
 .navbar {
     background:#f3bb22a4;
-    margin-bottom: 2rem;
+    margin-bottom: -.5rem;
     top: 0;
     position: -webkit-sticky;
     position: sticky;
@@ -43,7 +43,7 @@ body, html {
 
 .sessions_container {
     background-image: url(https://static.parade.com/wp-content/uploads/2018/08/book-stack-library-club-reading-ftr.jpg);
-    padding: 15%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -114,6 +114,7 @@ font-size: 1.2em;
 
 .bg {
 background-image: url(/img/bottombooks.jpg);
+height: 100%;
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
@@ -122,7 +123,7 @@ background-repeat: no-repeat;
 .display-3, .display-4 {
 text-align: center;
 margin-bottom: 2%;
-color:rgb(21, 95, 14);
+color:rgb(45, 151, 35);
 }
 
 .shelf-title {
@@ -164,8 +165,8 @@ background-color: #d4d3d3b6;
 
 .user_container {
     background-image: url(https://static.parade.com/wp-content/uploads/2018/08/book-stack-library-club-reading-ftr.jpg);
-    padding-top: 0%;
     padding-bottom: 40%;
+    padding-top: 5%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -215,6 +216,7 @@ background-color: #d4d3d3b6;
     background-position: center;
     background-repeat: no-repeat;
     padding-bottom: 15%;
+    padding-top: 5%;
 }
 
 .rating {
@@ -222,6 +224,7 @@ background-color: #d4d3d3b6;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    padding-top: 5%;
 }
 
 .col-head, .ratings-col, .genre-book {
@@ -238,6 +241,7 @@ background-color: #d4d3d3b6;
     background-position: center;
     background-repeat: no-repeat;
     padding-bottom: 40%;
+    padding-top: 5%;
 }
 
 .genre-error p {
@@ -270,6 +274,7 @@ color: rgb(51, 129, 217);
     background-position: center;
     background-repeat: no-repeat;
     padding-bottom: 20%;
+    padding-top: 5%;
 }
 
 .star{
