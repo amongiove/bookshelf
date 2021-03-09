@@ -162,13 +162,6 @@ background-color: #d4d3d3b6;
     text-align: center;
 }
 
-#user_home form {
-float: left;
-width: 25%;
-padding: 10px;
-color: rgba(247, 246, 243, 0);
-}
-
 .user_container {
     background-image: url(https://static.parade.com/wp-content/uploads/2018/08/book-stack-library-club-reading-ftr.jpg);
     padding-top: 0%;
