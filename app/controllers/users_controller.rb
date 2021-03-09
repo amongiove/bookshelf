@@ -22,11 +22,11 @@ class UsersController < ApplicationController
                 redirect to("/signup") 
             else  
                 @user = User.create(username: params[:username].downcase, email: params[:email].downcase, password_digest: params[:password])
-                session['user_id'] = @user.id  
-            end
-            @user.save
+                session['user_id'] = @user.id 
+                @user.save 
+                redirect to post('/login')
+            end 
         end
-        redirect to('/home')
     end
 
     get '/login' do

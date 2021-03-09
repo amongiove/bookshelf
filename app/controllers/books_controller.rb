@@ -18,23 +18,27 @@ class BooksController < ApplicationController
             redirect to("/books/#{@book.slug}")
         else
             if params[:title].empty? || params[:author].empty?
-                flash[:message] = "Please fill-in all specified fields."
+                flash[:message] = "Please fill in all specified fields."
+                redirect to('/books/new') 
+            elsif !params[:book] || !params[:book][:genre_ids]
+                flash[:message] = "Please specify at least one genre."
+                redirect to('/books/new') 
+            elsif !params[:yes_no]
+                flash[:message] = "Please specify if you have or have not already read this book."
                 redirect to('/books/new') 
             else 
                 @book = Book.create(:title => params[:title].downcase, :author => params[:author].downcase, :created_by_id => current_user.id)
-                unless params[:book][:genre_ids].empty?
-                    params[:book][:genre_ids].each do |genre|
-                        @book.genres << Genre.find_by_id(genre)
-                    end
-                    @book.users << current_user
+                params[:book][:genre_ids].each do |genre|
+                    @book.genres << Genre.find_by_id(genre)
                 end
+                @book.users << current_user
                 @userbook = UserBook.find_by(:user_id => current_user.id, :book_id => @book.id)
                 @userbook.read = params[:"yes_no"]
                 @userbook.save
+                @book.save
+                redirect to("/books/#{@book.slug}")
             end
-            @book.save
         end
-        redirect to("/books/#{@book.slug}")
     end
 
     get '/books/:slug' do
@@ -109,12 +113,6 @@ class BooksController < ApplicationController
         redirect to('/home')
     end  
 
-    # get '/books/:slug/read' do
-    #     #can i make this a pop up window vs. own page??
-    #     @book = Book.find_by_slug(params[:slug])
-    #     erb :'/books/read'  
-    # end
-
     post '/books/:slug/read' do
         @book = Book.find_by_slug(params[:slug])
         @userbook = UserBook.find_by(:user_id => current_user.id, :book_id => @book.id)
@@ -156,10 +154,6 @@ class BooksController < ApplicationController
         # end
         erb :'books/show_genre'
     end
-
-    # get '/recommendations' do
-    #     erb :'books/recommendations'
-    # end
 
     post '/recommendations' do 
         category_id = params[:genre_category_id]
