@@ -147,12 +147,18 @@ class BooksController < ApplicationController
     end
     
     post '/books-by-genre' do
-        @books = Book.all
-        @genre = Genre.find_by_id(params[:genre_id])
-        # if @genre.books.count == 0
-        #     flash[:message] = "Sorry, we couldn't find any books in our library that belong to this genre."
-        # end
-        erb :'books/show_genre'
+        if Genre.find_by_id(params[:genre_id]) != nil
+            @books = Book.all
+            @genre = Genre.find_by_id(params[:genre_id])
+            if @genre.books.empty?
+                flash[:message] = "Sorry, we couldn't find any books in our library that belong to this genre. Select another genre to continue to return to library."
+                redirect to("/books-by-genre")
+            end
+            erb :'books/show_genre'
+        else
+            flash[:message] = "Please select a genre to continue to books."
+            redirect to("/books-by-genre")
+        end
     end
 
     post '/recommendations' do 

@@ -1,4 +1,7 @@
 <div class="genre">
+    <div class="error">
+        <p><%= flash[:message] %></p>
+    <div>
     <h2 class="display-4">Which genre would you like to explore?</h2> 
     <div class="text-center">
         <form action="/books-by-genre" method="POST">
