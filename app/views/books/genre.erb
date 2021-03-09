@@ -1,24 +1,22 @@
 <div class="genre">
-    <form action="/books-by-genre" method="POST">
-        <h2 class="display-4">Which genre would you like to explore?</h2> 
-        <div class="container" >
-            <div class="row row-cols-3">
-            <% Genre.all.each do |genre| %>
-            <div class="row">
-                <div class="list-group-item list-group-item-action" >
-                <div class="col"><input type="radio" id="genre_<%=genre.id%>" name="genre_id" value="<%= genre.id %>">
-                <label><%= genre.name %></label></div><br>  
-                </div> 
+    <h2 class="display-4">Which genre would you like to explore?</h2> 
+    <div class="text-center">
+        <form action="/books-by-genre" method="POST">
+            <div class="col-5 mx-auto">
+            <select class="form-select" name="genre_id" aria-label="Default select example">
+                <option selected>Select a Genre to view Books</option>
+                <% Genre.all.each do |genre| %>
+                    <option id="genre_<%=genre.id%>" name="genre_id" value="<%= genre.id %>"><%= genre.name %></option>
+                <%end%>
+            </select>
             </div>
-            <%end%><br>
-        </div>
-    </div><br>
-            <div class="text-center">
-                <input class="btn btn-dark" type="submit" value="View Books">
-            </div>
-    </form><br><br>
-
-            <div class="text-center">
-                <a class="btn btn-outline-dark" href="/books" role="button">Return to the Library</a>
-            </div><br><br>
+            <br><br>
+            <input class="btn btn-success" type="submit" value="View Books">
+        </form> 
+    </div>
+    <br><br>
+    <div class="text-center">
+        <a class="btn btn-outline-dark" href="/books" role="button">Return to the Library</a>
+    </div><br><br>
 </div>
+
