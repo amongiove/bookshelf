@@ -3,14 +3,19 @@
     <div class="container">
         <form action="/recommendations/add" method="POST">
             <p small class="text-muted">Select the book you would like to add to your BookShelf</p>
-            <div class="row row-cols-2 g-4">
+            <div class="row row-cols-2 g-4 mx-auto">
                 <% @books.each do |book| %>
                 <div class="col">
-                    <div class="card">
-                        <input type="radio" id="book" name="book[:title]" value="<%= book[:title] %>" required>
+                    <div class="rec-container">
+                        <input class="radio-button" type="radio" id="book" name="book[:title]" value="<%= book[:title] %>" required>
                         <input type="hidden" id="book" name="book[:author]" value="<%= book[:author] %>">
                         <input type="hidden" id="book" name="book[:genre]" value="<%= @genre.id%>">
-                        <label><%=book[:title]%> written by <%=book[:author]%></label>
+                        <div class="radio-tile">
+                            <label class="rec-label">
+                                <%=book[:title]%> 
+                                <p small class="text-muted"><%=book[:author]%></p>
+                            </label>
+                        </div>
                     </div>
                 </div><br><br>
                 <%end%>
@@ -22,7 +27,7 @@
     </div>
     <br>
     <div class="text-center">
-        <a class="btn btn-outline-secondary" href="/books" role="button">Return to the Library</a>
+        <a class="btn btn-secondary" href="/books" role="button">Return to the Library</a>
     </div>
 
 </div>
