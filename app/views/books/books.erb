@@ -1,4 +1,9 @@
 <div class="library-container">
+
+    <div class="error">
+        <p><%= flash[:message] %></p>
+    <div>
+    
     <section id="library" class="books">
         <h1 class="display-3">Unsure what you are looking for?</h1>
 
@@ -24,7 +29,7 @@
         <div class="text-center">
             <form action="/recommendations" method="POST">
                 <div class="col-5 mx-auto">
-                <select class="form-select" name="genre_category_id" aria-label="Default select example">
+                <select class="form-select" name="genre_category_id" aria-label="Default select example" required>
                     <option selected> Still want more? Select a Genre to view Recommendations</option>
                     <% Genre.all.each do |genre| %>
                         <option id="genre_<%=genre.category_id%>" name="genre_category_id" value="<%= genre.category_id %>"><%= genre.name %></option>

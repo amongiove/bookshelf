@@ -7,7 +7,7 @@
                 <% @books.each do |book| %>
                 <div class="col">
                     <div class="card">
-                        <input type="radio" id="book" name="book[:title]" value="<%= book[:title] %>">
+                        <input type="radio" id="book" name="book[:title]" value="<%= book[:title] %>" required>
                         <input type="hidden" id="book" name="book[:author]" value="<%= book[:author] %>">
                         <input type="hidden" id="book" name="book[:genre]" value="<%= @genre.id%>">
                         <label><%=book[:title]%> written by <%=book[:author]%></label>

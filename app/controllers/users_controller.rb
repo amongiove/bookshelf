@@ -24,7 +24,8 @@ class UsersController < ApplicationController
                 @user = User.create(username: params[:username].downcase, email: params[:email].downcase, password_digest: params[:password])
                 session['user_id'] = @user.id 
                 @user.save 
-                redirect to post('/login')
+                session['user_id'] = @user.id
+                redirect to('/home')
             end 
         end
     end

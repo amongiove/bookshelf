@@ -156,11 +156,16 @@ class BooksController < ApplicationController
     end
 
     post '/recommendations' do 
-        category_id = params[:genre_category_id]
-        @genre = Genre.find_by(:category_id => category_id)
-        penguin_data = PenguinApi.get_books(category_id)
-        @books = TransformData.get_book_info(penguin_data)
-        erb :'/books/show_recs'
+        if Genre.find_by(:category_id => params[:genre_category_id]) != nil
+            category_id = params[:genre_category_id]
+            @genre = Genre.find_by(:category_id => category_id)
+            penguin_data = PenguinApi.get_books(category_id)
+            @books = TransformData.get_book_info(penguin_data)
+            erb :'/books/show_recs'
+        else
+            flash[:message] = "Please select a genre to continue to recommendations."
+            redirect to("/books")
+        end
     end
 
     post '/recommendations/add' do
