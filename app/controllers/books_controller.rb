@@ -1,4 +1,3 @@
-require 'pry'
 class BooksController < ApplicationController
     
     get '/books' do
@@ -78,18 +77,17 @@ class BooksController < ApplicationController
         if @review != nil
             flash[:message] = "Oops! It looks like you have already reviewed this book."
             redirect to("/books/#{@book.slug}")
-        elsif 
-            params[:review].empty? || params[:rating] == nil
+        elsif params[:review].empty? || params[:rating] == nil
             flash[:message] = "Please fill-in all available fields"
             redirect to("/books/#{@book.slug}/review")
         else
             @review = Review.create(:review => params[:review], :rating_value => params[:rating], :book_id => @book.id, :user_id => current_user.id)
             @userbook = UserBook.find_or_create_by(:user_id => current_user.id, :book_id => @book.id)
             @userbook.read = true
+            @userbook.save
+            @review.save
+            redirect to('/home')
         end
-        @userbook.save
-        @review.save
-        redirect to('/home')
     end
 
     get '/books/:slug/review/edit' do
@@ -101,7 +99,7 @@ class BooksController < ApplicationController
 
     patch '/books/:slug/review/edit' do
         if !logged_in?
-            flash[:message] = "You must be logged in to do this."
+            flash[:message] = "You must be logged in to edit a review."
             redirect to("/login") 
         else
             @book = Book.find_by_slug(params[:slug])
@@ -139,7 +137,6 @@ class BooksController < ApplicationController
         @userbook = UserBook.find_by(:user_id => current_user.id, :book_id => @book.id)
         @userbook.read = params[:"read?"]
         @userbook.save
-
         redirect to('/home')
     end  
 
@@ -173,6 +170,7 @@ class BooksController < ApplicationController
     end
 
     get '/books-by-genre' do
+        @genres = Genre.all
         erb :'books/genre'
     end
     
@@ -181,7 +179,7 @@ class BooksController < ApplicationController
             @books = Book.all
             @genre = Genre.find_by_id(params[:genre_id])
             if @genre.books.empty?
-                flash[:message] = "Sorry, we couldn't find any books in our library that belong to this genre. Select another genre to continue or return to library."
+                flash[:message] = "Sorry, we couldn't find any books in our library that belong to this genre. Select another genre to continue."
                 redirect to("/books-by-genre")
             end
             erb :'books/show_genre'

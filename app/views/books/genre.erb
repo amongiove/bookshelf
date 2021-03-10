@@ -8,7 +8,7 @@
             <div class="col-5 mx-auto">
             <select class="form-select" name="genre_id" aria-label="Default select example">
                 <option selected>Select a Genre to view Books</option>
-                <% Genre.all.each do |genre| %>
+                <% @genres.each do |genre| %>
                     <option id="genre_<%=genre.id%>" name="genre_id" value="<%= genre.id %>"><%= genre.name %></option>
                 <%end%>
             </select>

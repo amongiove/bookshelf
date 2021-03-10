@@ -5,29 +5,24 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        if params[:username].empty? || params[:email].empty? || params[:password].empty?
-            flash[:message] = "Please fill in all available fields."
+        if User.find_by(:username => params[:username].downcase) != nil 
+            flash[:message] = "That username is already in use."
             redirect to("/signup")
-        elsif 
-            if User.find_by(:username => params[:username]) != nil 
-                flash[:message] = "That username is already in use."
-                redirect to("/signup")
-            elsif
-                User.find_by(:email => params[:email]) != nil
-                    flash[:message] = "That email is already in use."
-                    redirect to("/signup") 
-            elsif
-                params[:password] != params[:reenter_password]
-                flash[:message] = "Passwords do not match."
+        elsif
+            User.find_by(:email => params[:email].downcase) != nil
+                flash[:message] = "That email is already in use."
                 redirect to("/signup") 
-            else  
-                @user = User.create(username: params[:username].downcase, email: params[:email].downcase, password_digest: params[:password])
-                session['user_id'] = @user.id 
-                @user.save 
-                session['user_id'] = @user.id
-                redirect to('/home')
-            end 
-        end
+        elsif
+            params[:password] != params[:reenter_password]
+            flash[:message] = "Passwords do not match."
+            redirect to("/signup") 
+        else  
+            @user = User.create(username: params[:username].downcase, email: params[:email].downcase, password_digest: params[:password])
+            session['user_id'] = @user.id 
+            @user.save 
+            session['user_id'] = @user.id
+            redirect to('/home')
+        end 
     end
 
     get '/login' do
@@ -71,7 +66,7 @@ class UsersController < ApplicationController
             @users = User.all
             erb :'users/users'
         else
-            flash[:message] = "You need to be logged in to see that."
+            flash[:message] = "You must be logged in to view this page."
             redirect to('/login')
         end
     end
