@@ -57,6 +57,13 @@
                                 <input class="btn btn-secondary" type="submit" name="submit" value="Review this Book">
                             </form>
                         </div><br>
+                    <%else%>
+                        <div class="text-left">
+                            <form action="/books/<%=@book.slug%>/review/edit" method="GET">
+                                <input class="btn btn-secondary" type="submit" name="submit" value="Edit your Review">
+                            </form>
+                        </div><br>
+
                     <%end%>
 
                     <div class="text-left">

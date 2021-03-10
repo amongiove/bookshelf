@@ -1,7 +1,14 @@
 <div class="book_container">
-    <div class="error">
-        <p><%= flash[:message] %></p>
-    <div>
+
+    <h3 class="display-6">Your Review of this Book</h3> 
+    <h4 small class="text-muted"><%=@review.review%></h4>
+    <h3 class="display-6">Your Rating</h3> 
+    <h4 small class="text-muted"><%=@review.rating_value%>/5</h4><br>
+
+        <div class="error">
+            <p><%= flash[:message] %></p>
+        <div><br>
+
      <div class="col-7">
         <div class="book-header">
             <h1 class="display-5"><%=@book.title.split.map(&:capitalize).join(' ')%></h1> 
@@ -9,15 +16,16 @@
             <h4 small class="text-muted"><%=@book.author.split.map(&:capitalize).join(' ')%></h4>
         </div><br>
 
-        <form method="POST" action="/books/<%=@book.slug%>/review">
+        <form method="POST" action="/books/<%=@book.slug%>/review/edit">
+            <input name="_method" type="hidden" value="patch">
             <div class="col-5">
-                <label><h4 class="form-label">Write your review below</h4></label>
+                <label><h4 class="form-label">Edit your review below</h4></label>
 
                 <textarea class="form-control" type="text" name="review" id="review" rows="3" required></textarea>
             </div>
             <br><br>
             
-            <label><h4 class="form-label">Rate this book</h4></label><br>
+            <label><h4 class="form-label">Edit your rating</h4></label><br>
                 <fieldset>
                     <span class="star-cb-group">
                         <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
@@ -30,8 +38,14 @@
                 </fieldset>
             <br><br>
 
-            <input class="btn btn-secondary" type="submit" value="Submit Review">
+            <input class="btn btn-secondary" type="submit" value="Edit Review"><br><br>
         </form>
+
+        <div class="text-left">
+            <form action="/books/<%=@book.slug%>" method="GET">
+                <input class="btn btn-secondary" type="submit" name="submit" value="Return to Book">
+            </form>
+        </div><br>
     </div>
 </div>
 

@@ -43,7 +43,9 @@ class BooksController < ApplicationController
 
     get '/books/:slug' do
         @book = Book.find_by_slug(params[:slug])
-        erb :'books/show'
+        if @book != nil
+            erb :'books/show'
+        end
     end
 
     delete '/books/:slug/delete' do
@@ -74,7 +76,7 @@ class BooksController < ApplicationController
 
     post '/books/:slug/review' do
         @book = Book.find_by_slug(params[:slug])
-        if params[:review].empty? || params[:rating].empty?
+        if params[:review].empty? || params[:rating] == nil
             flash[:message] = "Please fill-in all available fields"
             redirect to("/books/#{@book.slug}/review")
         else
@@ -85,6 +87,31 @@ class BooksController < ApplicationController
         @userbook.save
         @review.save
         redirect to('/home')
+    end
+
+    get '/books/:slug/review/edit' do
+        @book = Book.find_by_slug(params[:slug])
+        @user = current_user
+        @review = Review.find_by(:book_id => @book.id, :user_id => @user.id)
+        erb :'/books/edit_review'
+    end
+
+    patch '/books/:slug/review/edit' do
+        if !logged_in?
+            flash[:message] = "You must be logged in to do this."
+            redirect to("/login") 
+        else
+            @book = Book.find_by_slug(params[:slug])
+            @user = current_user
+            @review = Review.find_by(:book_id => @book.id, :user_id => @user.id)
+            if params[:review].empty? || params[:rating] == nil
+                flash[:message] = "Please fill-in all available fields"
+                redirect to("/books/#{@book.slug}/review/edit")
+            else
+                @review.update(:review => params[:review], :rating_value => params[:rating])
+                redirect to("/books/#{@book.slug}")
+            end
+        end
     end
 
     get '/books/:slug/add' do
