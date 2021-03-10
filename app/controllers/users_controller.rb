@@ -78,9 +78,13 @@ class UsersController < ApplicationController
 
     get '/users/:slug' do
         @user = User.find_by_slug(params[:slug])
-        @books = Book.all
-        @user_books = @user.user_books
-        erb :'users/show'
+        if @user != nil
+            @books = Book.all
+            @user_books = @user.user_books
+            erb :'users/show'
+        else
+            erb :'/404'
+        end
     end
 
 end

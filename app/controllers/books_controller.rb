@@ -45,6 +45,8 @@ class BooksController < ApplicationController
         @book = Book.find_by_slug(params[:slug])
         if @book != nil
             erb :'books/show'
+        else
+            erb :'/404'
         end
     end
 
@@ -66,17 +68,18 @@ class BooksController < ApplicationController
         @book = Book.find_by_slug(params[:slug])
         @user = current_user
         @review = Review.find_by(:book_id => @book.id, :user_id => @user.id)
-        if @review != nil
-            flash[:message] = "Oops! It looks like you have already reviewed this book."
-            redirect to("/books/#{@book.slug}")
-        else
-            erb :'books/review'
-        end
+        erb :'books/review'
     end
 
     post '/books/:slug/review' do
         @book = Book.find_by_slug(params[:slug])
-        if params[:review].empty? || params[:rating] == nil
+        @user = current_user
+        @review = Review.find_by(:book_id => @book.id, :user_id => @user.id)
+        if @review != nil
+            flash[:message] = "Oops! It looks like you have already reviewed this book."
+            redirect to("/books/#{@book.slug}")
+        elsif 
+            params[:review].empty? || params[:rating] == nil
             flash[:message] = "Please fill-in all available fields"
             redirect to("/books/#{@book.slug}/review")
         else

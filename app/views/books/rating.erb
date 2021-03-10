@@ -15,11 +15,11 @@
                     <%@sorted_averages.each do |array|%>
                         <tr>
                         <%if array[1] == 0%>
-                            <th class="ratings-col" scope="row">Not Yet Rated</th>
+                            <td class="ratings-col" scope="row"><b>Not Yet Rated</b></td>
                             <td><a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a></td>
                             <td><%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%></td>
                         <%else%>
-                            <th class="ratings-col" scope="row"><%=array[1]%></th>
+                            <td class="ratings-col" scope="row"><b><%=array[1]%></b></td>
                             <td><a href="/books/<%=Book.find_by_id(array[0]).slug%>"><%=Book.find_by_id(array[0]).title.split.map(&:capitalize).join(' ')%></a></td>
                             <td><%=Book.find_by_id(array[0]).author.split.map(&:capitalize).join(' ')%></td>
                         <%end%></tr>

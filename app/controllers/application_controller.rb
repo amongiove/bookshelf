@@ -30,4 +30,10 @@ class ApplicationController < Sinatra::Base
     redirect to('/login')
   end
 
+  not_found do
+    status 404
+    'not found'
+    erb :'/404'
+  end
+
 end
