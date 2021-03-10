@@ -151,7 +151,7 @@ class BooksController < ApplicationController
             @books = Book.all
             @genre = Genre.find_by_id(params[:genre_id])
             if @genre.books.empty?
-                flash[:message] = "Sorry, we couldn't find any books in our library that belong to this genre. Select another genre to continue to return to library."
+                flash[:message] = "Sorry, we couldn't find any books in our library that belong to this genre. Select another genre to continue or return to library."
                 redirect to("/books-by-genre")
             end
             erb :'books/show_genre'

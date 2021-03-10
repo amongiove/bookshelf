@@ -276,27 +276,6 @@ color: rgb(51, 129, 217);
     padding-bottom: 20%;
     padding-top: 5%;
 }
-
-.star{
-    /* remove standard background appearance */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    /* create custom radiobutton appearance */
-    display: inline-block;
-    
-    width: 30px;
-    height: 30px;
-    padding: 6px;
-    /* background-color only for content */
-    border: 3px solid #bbbbbb;
-    background-color: #e7e6e7;
-    border-radius: 50%;
-  }
-  /* appearance for checked radiobutton */
-.star:checked {
-    background-color: gold;
-  }
   
 .rec-container{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -341,3 +320,51 @@ color: rgb(51, 129, 217);
     background-color: rgb(184, 187, 186);
     opacity: .35;
 }
+.star-cb-group {
+    font-size: 0;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
+  .star-cb-group * {
+    font-size: 2rem;
+  }
+  .star-cb-group > input {
+    display: none;
+  }
+  .star-cb-group > input + label {
+    display: inline-block;
+    overflow: hidden;
+    text-indent: 9999px;
+    width: 2em;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .star-cb-group > input + label:before {
+    display: inline-block;
+    text-indent: -9999px;
+    content: "☆";
+    color: #888;
+  }
+  .star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
+    content: "★";
+    color: goldenrod;
+    text-shadow: 0 0 1px #333;
+  }
+  .star-cb-group > .star-cb-clear + label {
+    text-indent: -9999px;
+    width: .5em;
+    margin-left: -.5em;
+  }
+  .star-cb-group > .star-cb-clear + label:before {
+    width: 1.5em;
+  }
+  .star-cb-group:hover > input + label:before {
+    content: "☆";
+    color: #888;
+    text-shadow: none;
+  }
+  .star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
+    content: "★";
+    color:goldenrod;
+    text-shadow: 0 0 1px #333;
+  }
