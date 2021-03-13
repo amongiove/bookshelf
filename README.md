@@ -19,4 +19,4 @@ These instructions will get you a copy of the project up and running on your loc
   Bug reports and pull requests are welcome on GitHub at https://github.com/amongiove/bookshelf.
 
 ## License
-  This project is licensed under the MIT License - see the LICENSE.md file for details
+  This project is licensed under the MIT License - see the LICENSE.md file for details.
