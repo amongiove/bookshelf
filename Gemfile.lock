@@ -57,6 +57,7 @@ GEM
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    pg (1.2.3)
     pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -140,6 +141,7 @@ DEPENDENCIES
   database_cleaner
   dotenv (~> 2.7, >= 2.7.6)
   json (~> 2.3, >= 2.3.1)
+  pg
   pry
   rack-test
   rake
@@ -153,6 +155,9 @@ DEPENDENCIES
   sqlite3
   thin (~> 1.8)
   tux
+
+RUBY VERSION
+   ruby 2.6.1p33
 
 BUNDLED WITH
    2.1.4

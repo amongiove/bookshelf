@@ -5,7 +5,7 @@ require 'require_all'
 require 'dotenv'
     Dotenv.load('file1.env', 'file2.env')
 
-configure :development do
+configure :production, :development do
     ENV['SINATRA_ENV'] ||= "development"
 
     require 'bundler/setup'
