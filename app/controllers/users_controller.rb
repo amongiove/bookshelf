@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             flash[:message] = "Passwords do not match."
             redirect to("/signup") 
         else  
-            @user = User.create(username: params[:username].downcase, email: params[:email].downcase, password_digest: params[:password])
+            @user = User.create(username: params[:username].downcase, email: params[:email].downcase, password: params[:password])
             session['user_id'] = @user.id 
             @user.save 
             session['user_id'] = @user.id
@@ -34,14 +34,14 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        @user = User.find_by(:username => params[:username], :password_digest => params[:password])
-        if @user != nil
-            session['user_id'] = @user.id
+        @user = User.find_by(:username => params[:username]) 
+        if @user  && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect to("/home")
         else
             flash[:message] = "Incorrect username and/or password."
             redirect to('/login')
         end
-        redirect to("/home")
     end
 
     get '/logout' do
